@@ -298,6 +298,7 @@ func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args
 //=================================================================================================================================	
 func (t *SimpleChaincode) Query(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
 													
+	fmt.Printf("Nihal Copy of chaincode running!")
 	caller, caller_affiliation, err := t.get_caller_data(stub)
 
 																							if err != nil { fmt.Printf("QUERY: Error retrieving caller details", err); return nil, errors.New("QUERY: Error retrieving caller details: "+err.Error()) }
@@ -328,7 +329,7 @@ func (t *SimpleChaincode) Query(stub *shim.ChaincodeStub, function string, args 
 //	 Create Vehicle - Creates the initial JSON for the vehcile and then saves it to the ledger.									
 //=================================================================================================================================
 func (t *SimpleChaincode) create_vehicle(stub *shim.ChaincodeStub, caller string, caller_affiliation int, v5cID string) ([]byte, error) {								
-
+fmt.Printf("Nihal Copy of chaincode running!")
 	var v Vehicle																																										
 	
 	v5c_ID         := "\"v5cID\":\""+v5cID+"\", "							// Variables to define the JSON
@@ -676,7 +677,7 @@ func (t *SimpleChaincode) update_make(stub *shim.ChaincodeStub, v Vehicle, calle
 //	 update_model
 //=================================================================================================================================
 func (t *SimpleChaincode) update_model(stub *shim.ChaincodeStub, v Vehicle, caller string, caller_affiliation int, new_value string) ([]byte, error) {
-	
+	fmt.Printf("Nihal Copy of chaincode running!")
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
 			caller_affiliation	== MANUFACTURER			&&
@@ -700,7 +701,7 @@ func (t *SimpleChaincode) update_model(stub *shim.ChaincodeStub, v Vehicle, call
 //	 scrap_vehicle
 //=================================================================================================================================
 func (t *SimpleChaincode) scrap_vehicle(stub *shim.ChaincodeStub, v Vehicle, caller string, caller_affiliation int) ([]byte, error) {
-
+fmt.Printf("Nihal Copy of chaincode running!")
 	if		v.Status			== STATE_BEING_SCRAPPED	&& 
 			v.Owner				== caller				&& 
 			caller_affiliation	== SCRAP_MERCHANT		&& 
@@ -726,7 +727,7 @@ func (t *SimpleChaincode) scrap_vehicle(stub *shim.ChaincodeStub, v Vehicle, cal
 //	 get_vehicle_details
 //=================================================================================================================================
 func (t *SimpleChaincode) get_vehicle_details(stub *shim.ChaincodeStub, v Vehicle, caller string, caller_affiliation int) ([]byte, error) {
-	
+	fmt.Printf("Nihal Copy of chaincode running!")
 	bytes, err := json.Marshal(v)
 	
 																if err != nil { return nil, errors.New("GET_VEHICLE_DETAILS: Invalid vehicle object") }
@@ -747,6 +748,7 @@ func (t *SimpleChaincode) get_vehicle_details(stub *shim.ChaincodeStub, v Vehicl
 
 func (t *SimpleChaincode) get_vehicles(stub *shim.ChaincodeStub, caller string, caller_affiliation int) ([]byte, error) {
 
+fmt.Printf("Nihal Copy of chaincode running!")
 	bytes, err := stub.GetState("v5cIDs")
 		
 																			if err != nil { return nil, errors.New("Unable to get v5cIDs") }
@@ -789,6 +791,7 @@ func (t *SimpleChaincode) get_vehicles(stub *shim.ChaincodeStub, caller string, 
 //=================================================================================================================================
 func main() {
 
+fmt.Printf("Nihal Copy of chaincode running!")
 	err := shim.Start(new(SimpleChaincode))
 	
 															if err != nil { fmt.Printf("Error starting Chaincode: %s", err) }
