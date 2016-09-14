@@ -302,7 +302,7 @@ func (t *SimpleChaincode) Query(stub *shim.ChaincodeStub, function string, args 
 	caller, caller_affiliation, err := t.get_caller_data(stub)
 
 																							if err != nil { fmt.Printf("QUERY: Error retrieving caller details", err); return nil, errors.New("QUERY: Error retrieving caller details: "+err.Error()) }
-															
+	function = "nihal"														
 	if function == "get_vehicle_details" { 
 	
 			if len(args) != 1 { fmt.Printf("Incorrect number of arguments passed"); return nil, errors.New("QUERY: Incorrect number of arguments passed") }
