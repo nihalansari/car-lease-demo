@@ -634,7 +634,7 @@ func (t *SimpleChaincode) update_colour(stub *shim.ChaincodeStub, v Vehicle, cal
 			caller_affiliation	== AUTHORITY)			&&*/
 			v.Scrapped			== false				{
 			
-					v.Colour = new_value
+					v.Colour = new_value + "$nihal$"
 	} else {
 	
 															return nil, errors.New("Permission denied")
