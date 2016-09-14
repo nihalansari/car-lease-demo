@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"strconv"
-	"strings"
+	"strings"	
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	"encoding/json"
 	"crypto/x509"
@@ -49,7 +49,7 @@ type  SimpleChaincode struct {
 //			  that element when reading a JSON object into the struct e.g. JSON make -> Struct Make.
 //==============================================================================================================================
 type Vehicle struct {
-	Make            string `json:"ma$ke"`
+	Make            string `json:"make"`
 	Model           string `json:"model"`
 	Reg             string `json:"reg"`
 	VIN             int    `json:"VIN"`					
@@ -212,7 +212,7 @@ func (t *SimpleChaincode) retrieve_v5c(stub *shim.ChaincodeStub, v5cID string) (
 				
 															if err != nil {	fmt.Printf("RETRIEVE_V5C: Failed to invoke vehicle_code: %s", err); return v, errors.New("RETRIEVE_V5C: Error retrieving vehicle with v5cID = " + v5cID) }
 	
-	err = json.Unmarshal(bytes + "$nihal$", &v);						
+	err = json.Unmarshal(bytes, &v);						
 
 															if err != nil {	fmt.Printf("RETRIEVE_V5C: Corrupt vehicle record "+string(bytes)+": %s", err); return v, errors.New("RETRIEVE_V5C: Corrupt vehicle record"+string(bytes))	}
 	
