@@ -40,8 +40,19 @@ var participants_info = {
 			"address_line_2": "Coventry",
 			"address_line_3": "United Kingdom",
 			"postcode": "CV3 4LF"
+		},
+		{
+			"name": "Nihal Ansari Corp",
+			"identity": "Nihal_Ansari_Corp",
+			"password": "nNRyjPKrSpUb",
+			"address_line_1": "City Of York",
+			"address_line_2": "Yorkshire",
+			"address_line_3": "United Kingdom",
+			"postcode": "YO31 7PN"
 		}
-	],
+
+
+		],
 	"dealerships": [
 		{
 			"name": "Beechvale Group",

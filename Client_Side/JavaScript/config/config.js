@@ -84,6 +84,11 @@ config.participants.users.manufacturers[2].company = 'Jaguar Land Rover'
 config.participants.users.manufacturers[2].type = 'Manufacturer'
 config.participants.users.manufacturers[2].user = 'Mandy'
 
+config.participants.users.manufacturers[2] = {}
+config.participants.users.manufacturers[2].company = 'Nihal Ansari Corp'
+config.participants.users.manufacturers[2].type = 'Manufacturer'
+config.participants.users.manufacturers[2].user = 'Nihal'
+
 // Dealerships
 config.participants.users.dealerships[0] = {}
 config.participants.users.dealerships[0].company = 'Beechvale Group'

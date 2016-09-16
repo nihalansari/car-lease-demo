@@ -23,6 +23,14 @@ var simple_scenario = {
 			"Colour": "Blue",
 			"Reg": "NL65 DTU",
 			"Owners": ["DVLA", "Alfa Romeo"]
+		},
+		{
+			"VIN": "880352730316999",
+			"Make": "Nihal Ansari Corp",
+			"Model": "Ultra1800",
+			"Colour": "White",
+			"Reg": "NL65 ABC",
+			"Owners": ["DVLA", "Nihal Ansari Corp"]
 		}
 	]
 };
