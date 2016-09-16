@@ -59,6 +59,7 @@ type Vehicle struct {
 	Colour          string `json:"colour"`
 	V5cID           string `json:"v5cID"`
 	LeaseContractID string `json:"leaseContractID"`
+	testProperty    string `json:"testProperty"`
 }
 
 
@@ -634,7 +635,7 @@ func (t *SimpleChaincode) update_colour(stub *shim.ChaincodeStub, v Vehicle, cal
 			caller_affiliation	== AUTHORITY)			&&*/
 			v.Scrapped			== false				{
 			
-					v.Colour = new_value + "$nihal$"
+					v.Colour = new_value
 	} else {
 	
 															return nil, errors.New("Permission denied")
@@ -696,6 +697,30 @@ func (t *SimpleChaincode) update_model(stub *shim.ChaincodeStub, v Vehicle, call
 	return nil, nil
 	
 }
+
+/=================================================================================================================================
+//=================================================================================================================================
+func (t *SimpleChaincode) update_testProperty(stub *shim.ChaincodeStub, v Vehicle, caller string, caller_affiliation int, new_value string) ([]byte, error) {
+	fmt.Printf("Nihal Copy of chaincode running!")
+	if 		v.Status			== STATE_MANUFACTURE	&&
+			v.Owner				== caller				&& 
+			caller_affiliation	== MANUFACTURER			&&
+			v.Scrapped			== false				{
+			
+					v.Model = new_value
+					
+	} else {
+															return nil, errors.New("Permission denied")
+	}
+	
+	_, err := t.save_changes(stub, v)
+	
+															if err != nil { fmt.Printf("UPDATE_testProperty: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
+	
+	return nil, nil
+	
+}
+
 
 //=================================================================================================================================
 //	 scrap_vehicle
