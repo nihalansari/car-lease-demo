@@ -698,28 +698,6 @@ func (t *SimpleChaincode) update_model(stub *shim.ChaincodeStub, v Vehicle, call
 	
 }
 
-/=================================================================================================================================
-//=================================================================================================================================
-func (t *SimpleChaincode) update_testProperty(stub *shim.ChaincodeStub, v Vehicle, caller string, caller_affiliation int, new_value string) ([]byte, error) {
-	fmt.Printf("Nihal Copy of chaincode running!")
-	if 		v.Status			== STATE_MANUFACTURE	&&
-			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
-			v.Scrapped			== false				{
-			
-					v.Model = new_value
-					
-	} else {
-															return nil, errors.New("Permission denied")
-	}
-	
-	_, err := t.save_changes(stub, v)
-	
-															if err != nil { fmt.Printf("UPDATE_testProperty: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
-	
-	return nil, nil
-	
-}
 
 
 //=================================================================================================================================
