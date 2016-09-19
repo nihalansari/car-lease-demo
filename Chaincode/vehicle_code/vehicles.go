@@ -49,16 +49,31 @@ type  SimpleChaincode struct {
 //			  that element when reading a JSON object into the struct e.g. JSON make -> Struct Make.
 //==============================================================================================================================
 type Vehicle struct {
+	
+	//Note: commented descriptions are mapping of logistics properties to existing car lease properties 
+	// so that we have to do minimal change to the existing code
+	
+	//package source
 	Make            string `json:"make"`
+	//package type/size
 	Model           string `json:"model"`
+	//package dimensions
 	Reg             string `json:"reg"`
+	//weight
 	VIN             int    `json:"VIN"`					
+	//owner
 	Owner           string `json:"owner"`
+	//status
 	Scrapped        bool   `json:"scrapped"`
+	//delivered/in transit
 	Status          int    `json:"status"`
+	//last location
 	Colour          string `json:"colour"`
+	//date of dispatch
 	V5cID           string `json:"v5cID"`
+	//date of delivery
 	LeaseContractID string `json:"leaseContractID"`
+	//remarks
 	deletethisprop string `json:"deletethisprop"`
 	
 }
