@@ -91,10 +91,10 @@ function validate(el)
 		$('#errorRw').find('ul').append('<li>VIN must be a number</li>')
 		failed = true;
 	}
-	if($('#vin').val().trim().length != 15 && $('#vin').val().trim() != 0)
+	if($('#vin').val().trim().length < 3 && $('#vin').val().trim() != 0)
 	{
 		
-		$('#errorRw').find('ul').append('<li>VIN must be 15 characters (Currently ' + $('#vin').val().trim().length + ' characters)</li>')
+		$('#errorRw').find('ul').append('<li>VIN must be >100 (Currently ' + $('#vin').val().trim().length + ' characters)</li>')
 		failed = true;
 	}
 	if($('#vin').val().trim() == 0 && $('#hidVin').val().trim() != 0)

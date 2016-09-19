@@ -592,7 +592,7 @@ func (t *SimpleChaincode) update_vin(stub *shim.ChaincodeStub, v Vehicle, caller
 	
 	new_vin, err := strconv.Atoi(string(new_value)) 		                // will return an error if the new vin contains non numerical chars
 	
-															if err != nil || len(string(new_value)) != 15 { return nil, errors.New("Invalid value passed for new VIN") }
+															if err != nil || len(string(new_value)) < 3 { return nil, errors.New("Invalid value passed for new VIN") }
 	
 	if 		v.Status			== STATE_MANUFACTURE	&& 
 			v.Owner				== caller				&&
