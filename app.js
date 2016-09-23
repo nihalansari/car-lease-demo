@@ -225,6 +225,20 @@ app.get('/blockchain/assets/vehicles/:v5cID/scrap' , function(req,res)
 });
 
 //-----------------------------------------------------------------------------------------------
+//	**Nihal test API call ** Blockchain - Assets - Vehicles - Vehicle - deletethisprop 
+//-----------------------------------------------------------------------------------------------
+app.put('/blockchain/assets/vehicles/:v5cID/deletethisprop' , function(req,res)
+{
+	vehicle.deletethisprop.update(req,res)
+});
+
+app.get('/blockchain/assets/vehicles/:v5cID/deletethisprop' , function(req,res)
+{
+	vehicle.deletethisprop.read(req,res)
+});
+
+
+//-----------------------------------------------------------------------------------------------
 //	Blockchain - Participants
 //-----------------------------------------------------------------------------------------------
 app.post('/blockchain/participants', function(req,res){

@@ -301,6 +301,8 @@ func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args
 		} else if function == "update_make"  	    { return t.update_make(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_model"        { return t.update_model(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_registration" { return t.update_registration(stub, v, caller, caller_affiliation, args[0])
+		} else if function == "update_deletethisprop" { return t.update_deletethisprop(stub, v, caller, caller_affiliation, args[0])
+		
 		} else if function == "update_vin" 			{ return t.update_vin(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "update_colour" 		{ return t.update_colour(stub, v, caller, caller_affiliation, args[0])
 		} else if function == "scrap_vehicle" 		{ return t.scrap_vehicle(stub, v, caller, caller_affiliation) }
@@ -359,8 +361,9 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	leaseContract  := "\"LeaseContractID\":\"UNDEFINED\", "
 	status         := "\"Status\":0, "
 	scrapped       := "\"Scrapped\":false"
+	deletethisprop := "\"Colour\":\"UNDEFINED\", "
 	
-	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+scrapped+"}" 	// Concatenates the variables to create the total JSON object
+	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+scrapped+deletethisprop"}" 	// Concatenates the variables to create the total JSON object
 	
 	matched, err := regexp.Match("^[A-z][A-z][0-9]{7}", []byte(v5cID))  				// matched = true if the v5cID passed fits format of two letters followed by seven digits
 	
@@ -635,6 +638,30 @@ func (t *SimpleChaincode) update_registration(stub *shim.ChaincodeStub, v Vehicl
 	_, err := t.save_changes(stub, v)
 	
 															if err != nil { fmt.Printf("UPDATE_REGISTRATION: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
+	
+	return nil, nil
+	
+}
+
+//=================================================================================================================================
+//	**Nihal Test ** new property **deletethisprop** update
+//=================================================================================================================================
+func (t *SimpleChaincode) update_deletethisprop(stub *shim.ChaincodeStub, v Vehicle, caller string, caller_affiliation int, new_value string) ([]byte, error) {
+
+	
+	if		v.Owner				== caller			&& 
+			caller_affiliation	!= SCRAP_MERCHANT	&&
+			v.Scrapped			== false			{
+			
+					v.deletethisprop = new_value
+	
+	} else {
+															return nil, errors.New("Permission denied")
+	}
+	
+	_, err := t.save_changes(stub, v)
+	
+															if err != nil { fmt.Printf("UPDATE_DELTHISPROP: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
 	
 	return nil, nil
 	
