@@ -363,7 +363,7 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	scrapped       := "\"Scrapped\":false"
 	deletethisprop := "\"Colour\":\"UNDEFINED\", "
 	
-	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+scrapped+deletethisprop"}" 	// Concatenates the variables to create the total JSON object
+	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+scrapped+deletethisprop+"}" 	// Concatenates the variables to create the total JSON object
 	
 	matched, err := regexp.Match("^[A-z][A-z][0-9]{7}", []byte(v5cID))  				// matched = true if the v5cID passed fits format of two letters followed by seven digits
 	
