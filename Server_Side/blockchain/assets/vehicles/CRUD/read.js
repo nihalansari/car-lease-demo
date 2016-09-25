@@ -53,11 +53,8 @@ function get_all_cars(req, res)
 	{
 		if (!body.hasOwnProperty("error") && response.statusCode == 200)
 		{
-			window.alert("Hi!");
-			window.alert(body);
-			window.alert(body.result.message);
+
 			var data = JSON.parse(body.result.message);
-			window.alert(data);
 			for(var i = 0; i < data.length; i++)
 			{
 				tracing.create('INFO', 'GET blockchain/assets/vehicles', JSON.stringify(data[i]));
