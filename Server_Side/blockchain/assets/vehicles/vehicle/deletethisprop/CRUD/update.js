@@ -36,7 +36,7 @@ var update = function(req, res)
 						      "name": configFile.config.vehicle_name
 						    },
 						    "ctorMsg": {
-						      "function": "update_registration",
+						      "function": "update_deletethisprop",
 						      "args": [
 						        newValue.toString(), v5cID
 						      ]
