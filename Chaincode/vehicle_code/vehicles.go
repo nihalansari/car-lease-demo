@@ -360,7 +360,7 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	colour         := "\"Colour\":\"UNDEFINED\", "
 	leaseContract  := "\"LeaseContractID\":\"UNDEFINED\", "
 	status         := "\"Status\":0, "
-	deletethisprop := "\"Colour\":\"UNDEFINED\", "
+	deletethisprop := "\"Deletethisprop\":\"UNDEFINED\", "
 	scrapped       := "\"Scrapped\":false"
 	
 	
