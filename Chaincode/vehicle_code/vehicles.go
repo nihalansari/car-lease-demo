@@ -360,8 +360,9 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	colour         := "\"Colour\":\"UNDEFINED\", "
 	leaseContract  := "\"LeaseContractID\":\"UNDEFINED\", "
 	status         := "\"Status\":0, "
-	scrapped       := "\"Scrapped\":false"
 	deletethisprop := "\"Colour\":\"UNDEFINED\", "
+	scrapped       := "\"Scrapped\":false"
+	
 	
 	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+scrapped+deletethisprop+"}" 	// Concatenates the variables to create the total JSON object
 	
