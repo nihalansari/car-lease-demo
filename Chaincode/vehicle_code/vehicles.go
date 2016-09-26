@@ -827,7 +827,8 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	if len(result) == 1 {
 		result = "[]"
 	} else {
-		result = result[:len(result)-1] + "]"
+	
+		result = result[:len(result)-1] + "\"Deletethisprop\":" + "\"" + v.deletethisprop + "\""  + "]"
 	}
 	
 	return []byte(result), nil
