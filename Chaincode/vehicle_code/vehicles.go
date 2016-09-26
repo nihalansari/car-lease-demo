@@ -74,7 +74,7 @@ type Vehicle struct {
 	//date of delivery
 	LeaseContractID string `json:"leaseContractID"`
 	//remarks
-	deletethisprop string `json:"deletethisprop"`
+	DeleteThisPropID string `json:"deleteThisPropID"`
 	
 }
 
@@ -360,11 +360,11 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	colour         := "\"Colour\":\"UNDEFINED\", "
 	leaseContract  := "\"LeaseContractID\":\"UNDEFINED\", "
 	status         := "\"Status\":0, "
-	deletethisprop := "\"Deletethisprop\":\"UNDEFINED\", "
+	deleteThisProp := "\"DeleteThisPropID\":\"UNDEFINED\", "
 	scrapped       := "\"Scrapped\":false"
 	
 	
-	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+deletethisprop+scrapped+"}" 	// Concatenates the variables to create the total JSON object
+	vehicle_json := "{"+v5c_ID+vin+make+model+reg+owner+colour+leaseContract+status+deleteThisProp+scrapped+"}" 	// Concatenates the variables to create the total JSON object
 	
 	matched, err := regexp.Match("^[A-z][A-z][0-9]{7}", []byte(v5cID))  				// matched = true if the v5cID passed fits format of two letters followed by seven digits
 	
@@ -654,7 +654,7 @@ func (t *SimpleChaincode) update_deletethisprop(stub *shim.ChaincodeStub, v Vehi
 			caller_affiliation	!= SCRAP_MERCHANT	&&
 			v.Scrapped			== false			{
 			
-					v.deletethisprop = new_value
+					v.DeleteThisPropID = new_value
 	
 	} else {
 															return nil, errors.New("Permission denied")
@@ -828,7 +828,7 @@ fmt.Printf("Nihal Copy of chaincode running!")
 		result = "[]"
 	} else {
 	
-		result = result[:len(result)-1] + "\"Deletethisprop\":" + "\"" + v.deletethisprop + "\""  + "]"
+		result = result[:len(result)-1] + "]"
 	}
 	
 	return []byte(result), nil
@@ -839,7 +839,6 @@ fmt.Printf("Nihal Copy of chaincode running!")
 //=================================================================================================================================
 func main() {
 
-fmt.Printf("Nihal Copy of chaincode running!")
 	err := shim.Start(new(SimpleChaincode))
 	
 															if err != nil { fmt.Printf("Error starting Chaincode: %s", err) }
