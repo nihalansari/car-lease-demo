@@ -2,7 +2,7 @@
 
 var request = require('request');
 var fs = require('fs');
-var x509 = require('x509');
+var x509 = require('./lib/formats/x509');
 var reload = require('require-reload')(require),
     configFile = reload(__dirname+'/../../../configurations/configuration.js');
 var tracing = require(__dirname+'/../../../tools/traces/trace.js');

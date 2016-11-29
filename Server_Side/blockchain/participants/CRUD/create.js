@@ -22,19 +22,19 @@ var registerUser = function(req, res) {
 		case "Regulator":
 			numberAff = "0001";
 			break;
-		case "Manufacturer":
+		case "Suppliers":
 			numberAff = "0002";
 			break;
-		case "Dealership":
+		case "Warehouse":
 			numberAff = "0003";
 			break;
-		case "Lease Company":
+		case "Airports":
 			numberAff = "0004";
 			break;
-		case "Leasee":
+		case "Buyer":
 			numberAff = "0003";
 			break;
-		case "Scrap Merchant":
+		case "Delivery":
 			numberAff = "0005";
 			break;
 	}
@@ -122,20 +122,20 @@ function writeUserToFile(req, res, secret)
 			case "Regulator":
 				userType="regulators";
 				break;
-			case "Manufacturer":
-				userType="manufacturers";
+			case "Supplier":
+				userType="suppliers";
 				break;
-			case "Dealership":
-				userType="dealerships";
+			case "Warehouse":
+				userType="warehouse";
 				break;
-			case "Lease Company":
-				userType="lease_companies";
+			case "airports":
+				userType="airports";
 				break;
-			case "Leasee":
-				userType="leasees";
+			case "buyer":
+				userType="buyer";
 				break;
-			case "Scrap Merchant":
-				userType="scrap_merchants";
+			case "delivery":
+				userType="delivery";
 				break;
 		}
 		userNumber = newData[userType].length;

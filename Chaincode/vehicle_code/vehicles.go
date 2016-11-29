@@ -1,4 +1,4 @@
-package main
+package mainc
 
 import (
 	"errors"
@@ -7,29 +7,8 @@ import (
 	"strings"	
 	"github.com/hyperledger/fabric/core/chaincode/shim"
 	"encoding/json"
-	"crypto/x509"
-	"encoding/pem"
-	"net/url"
 	"regexp"
 )
-
-//==============================================================================================================================
-//	 Participant types - Each participant type is mapped to an integer which we use to compare to the value stored in a
-//						 user's eCert
-//==============================================================================================================================
-//CURRENT WORKAROUND USES ROLES CHANGE WHEN OWN USERS CAN BE CREATED SO THAT IT READ 1, 2, 3, 4, 5
-const  SOURCE = 11
-const  DISPATCHED = 12
-const  WITHSOURCECOURIER = 13
-const  WITHDESTCOURIER = 14
-const  WITHLASTMILE = 15
-const  RETURNED     = 16
-const   AUTHORITY      =  1
-const   MANUFACTURER   =  2
-const   PRIVATE_ENTITY =  3
-const   LEASE_COMPANY  =  4
-const   SCRAP_MERCHANT =  5	
-
 
 //==============================================================================================================================
 //	 Status types - Asset lifecycle is broken down into 5 statuses, this is part of the business logic to determine what can 
@@ -41,9 +20,12 @@ const   STATE_MANUFACTURE  			=  1
 const   STATE_PRIVATE_OWNERSHIP 	=  2
 const   STATE_LEASED_OUT 			=  3
 const   STATE_BEING_SCRAPPED  		=  4
-const   STATE_ONROUTE 				= 2
-const   STATE_DELIVERED 			=  3
-const   STATE_DAMAGED  				=  4
+
+const   STATE_ONROUTE 				= 11
+const   STATE_DAMAGED  				= 12
+const   STATE_DELIVERED 			= 100
+
+
 
 //==============================================================================================================================
 //	 Structure Definitions 
@@ -135,15 +117,7 @@ type CargoPack struct {
 type V5C_Holder struct {
 	V5Cs 	[]string `json:"v5cs"`
 }
-
-//==============================================================================================================================
-//	User_and_eCert - Struct for storing the JSON of a user and their ecert
-//==============================================================================================================================
-
-type User_and_eCert struct {
-	Identity string `json:"identity"`
-	eCert string `json:"ecert"`
-}		
+	
 
 //==============================================================================================================================
 //	Init Function - Called when the user deploys the chaincode																	
@@ -162,44 +136,8 @@ func (t *SimpleChaincode) Init(stub *shim.ChaincodeStub, function string, args [
 																
 	err = stub.PutState("v5cIDs", bytes)
 	
-	for i:=0; i < len(args); i=i+2 {
-		
-		t.add_ecert(stub, args[i], args[i+1])													
-	}
-
-	return nil, nil
-}
-
-//==============================================================================================================================
-//	 General Functions
-//==============================================================================================================================
-//	 get_ecert - Takes the name passed and calls out to the REST API for HyperLedger to retrieve the ecert
-//				 for that user. Returns the ecert as retrived including html encoding.
-//==============================================================================================================================
-func (t *SimpleChaincode) get_ecert(stub *shim.ChaincodeStub, name string) ([]byte, error) {
-	
-	ecert, err := stub.GetState(name)
-
-	if err != nil { return nil, errors.New("Couldn't retrieve ecert for user " + name) }
-	
-	return ecert, nil
-}
-
-//==============================================================================================================================
-//	 add_ecert - Adds a new ecert and user pair to the table of ecerts
-//==============================================================================================================================
-
-func (t *SimpleChaincode) add_ecert(stub *shim.ChaincodeStub, name string, ecert string) ([]byte, error) {
-	
-	
-	err := stub.PutState(name, []byte(ecert))
-
-	if err == nil {
-		return nil, errors.New("Error storing eCert for user " + name + " identity: " + ecert)
-	}
 	
 	return nil, nil
-
 }
 
 //==============================================================================================================================
@@ -209,59 +147,24 @@ func (t *SimpleChaincode) add_ecert(stub *shim.ChaincodeStub, name string, ecert
 
 func (t *SimpleChaincode) get_username(stub *shim.ChaincodeStub) (string, error) {
 
-	bytes, err := stub.GetCallerCertificate();
-															if err != nil { return "", errors.New("Couldn't retrieve caller certificate") }
-	x509Cert, err := x509.ParseCertificate(bytes);				// Extract Certificate from result of GetCallerCertificate						
-															if err != nil { return "", errors.New("Couldn't parse certificate")	}
 															
-	return x509Cert.Subject.CommonName, nil
+	return "jim", nil
 }
 
-//==============================================================================================================================
-//	 check_affiliation - Takes an ecert as a string, decodes it to remove html encoding then parses it and checks the
-// 				  		certificates common name. The affiliation is stored as part of the common name.
-//==============================================================================================================================
 
-func (t *SimpleChaincode) check_affiliation(stub *shim.ChaincodeStub, cert string) (int, error) {																																																					
-	
-
-	decodedCert, err := url.QueryUnescape(cert);    				// make % etc normal //
-	
-															if err != nil { return -1, errors.New("Could not decode certificate") }
-	
-	pem, _ := pem.Decode([]byte(decodedCert))           				// Make Plain text   //
-
-	x509Cert, err := x509.ParseCertificate(pem.Bytes);				// Extract Certificate from argument //
-														
-													if err != nil { return -1, errors.New("Couldn't parse certificate")	}
-
-	cn := x509Cert.Subject.CommonName
-	
-	res := strings.Split(cn,"\\")
-	
-	affiliation, _ := strconv.Atoi(res[2])
-	
-	return affiliation, nil
-		
-}
 
 //==============================================================================================================================
 //	 get_caller_data - Calls the get_ecert and check_role functions and returns the ecert and role for the
 //					 name passed.
 //==============================================================================================================================
 
-func (t *SimpleChaincode) get_caller_data(stub *shim.ChaincodeStub) (string, int, error){	
+func (t *SimpleChaincode) get_caller_data(stub *shim.ChaincodeStub) (string, error){	
 
 	user, err := t.get_username(stub)
-																		if err != nil { return "", -1, err }
+																		if err != nil { return "", err }
 																		
-	ecert, err := t.get_ecert(stub, user);					
-																if err != nil { return "", -1, err }
-
-	affiliation, err := t.check_affiliation(stub,string(ecert));			
-																		if err != nil { return "", -1, err }
-
-	return user, affiliation, nil
+	
+	return user, nil
 }
 
 //==============================================================================================================================
@@ -310,17 +213,17 @@ func (t *SimpleChaincode) save_changes(stub *shim.ChaincodeStub, v CargoPack) (b
 func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
 	
 	var i1 int
-	caller, caller_affiliation, err := t.get_caller_data(stub)
+	caller, err := t.get_caller_data(stub)
 
 	if err != nil { return nil, errors.New("Error retrieving caller information")}
 
 	
-	if function == "create_vehicle" { return t.create_vehicle(stub, caller, caller_affiliation, args[0])
+	if function == "create_package" { return t.create_package(stub, caller, args[0])
 	} else { 																				// If the function is not a create then there must be a car so we need to retrieve the car.
 		
 		argPos := 1
 		
-		if function == "scrap_vehicle" {																// If its a scrap vehicle then only two arguments are passed (no update value) all others have three arguments and the v5cID is expected in the last argument
+		if function == "deliver_package" {																// If its a scrap vehicle then only two arguments are passed (no update value) all others have three arguments and the v5cID is expected in the last argument
 			argPos = 0
 		}
 		
@@ -329,41 +232,34 @@ func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args
 																							if err != nil { fmt.Printf("INVOKE: Error retrieving v5c: %s", err); return nil, errors.New("Error retrieving v5c") }
 																		
 		if strings.Contains(function, "update") == false           && 
-		   function 							!= "scrap_vehicle"    { 									// If the function is not an update or a scrappage it must be a transfer so we need to get the ecert of the recipient.
+		   function 							!= "deliver_package"    { 									// If the function is not an update or a scrappage it must be a transfer so we need to get the ecert of the recipient.
 			
-				ecert, err := t.get_ecert(stub, args[0]);					
 				
-																		if err != nil { return nil, err }
-
-				rec_affiliation, err := t.check_affiliation(stub,string(ecert));	
-				
-																		if err != nil { return nil, err }
-				
-				if 		   function == "authority_to_manufacturer" { return t.authority_to_manufacturer(stub, v, caller, caller_affiliation, args[0], rec_affiliation)
-				} else if  function == "manufacturer_to_private"   { return t.manufacturer_to_private(stub, v, caller, caller_affiliation, args[0], rec_affiliation)
-				} else if  function == "private_to_private" 	   { return t.private_to_private(stub, v, caller, caller_affiliation, args[0], rec_affiliation)
-				} else if  function == "private_to_lease_company"  { return t.private_to_lease_company(stub, v, caller, caller_affiliation, args[0], rec_affiliation)
-				} else if  function == "lease_company_to_private"  { return t.lease_company_to_private(stub, v, caller, caller_affiliation, args[0], rec_affiliation)
-				} else if  function == "private_to_scrap_merchant" { return t.private_to_scrap_merchant(stub, v, caller, caller_affiliation, args[0], rec_affiliation)
+				if 		   function == "authority_to_manufacturer" { return t.authority_to_manufacturer(stub, v, caller, args[0])
+				} else if  function == "manufacturer_to_private"   { return t.manufacturer_to_private(stub, v, caller,  args[0])
+				} else if  function == "private_to_private" 	   { return t.private_to_private(stub, v, caller,  args[0])
+				} else if  function == "private_to_lease_company"  { return t.private_to_lease_company(stub, v, caller,  args[0])
+				} else if  function == "lease_company_to_private"  { return t.lease_company_to_private(stub, v, caller,  args[0])
+				} else if  function == "private_to_scrap_merchant" { return t.private_to_scrap_merchant(stub, v, caller,  args[0])
 				}
 			
-		} else if function == "update_type"  	    	{ return t.update_type(stub, v, caller, caller_affiliation, args[0])
-		} else if function == "update_particulars"      { return t.update_particulars(stub, v, caller, caller_affiliation, args[0])
-		} else if function == "update_sourcecity" 		{ return t.update_sourcecity(stub, v, caller, caller_affiliation, args[0])
-		} else if function == "update_destcity" 		{ return t.update_destcity(stub, v, caller, caller_affiliation, args[0])
+		} else if function == "update_type"  	    	{ return t.update_type(stub, v, caller,  args[0])
+		} else if function == "update_particulars"      { return t.update_particulars(stub, v, caller,  args[0])
+		} else if function == "update_sourcecity" 		{ return t.update_sourcecity(stub, v, caller,  args[0])
+		} else if function == "update_destcity" 		{ return t.update_destcity(stub, v, caller,  args[0])
 		} else if function == "update_weight" 			{ 	i1, err = strconv.Atoi(args[0])
-															return t.update_weight(stub, v, caller, caller_affiliation, i1) 
-		} else if function == "update_owner" 			{ return t.update_owner(stub, v, caller, caller_affiliation, args[0])
+															return t.update_weight(stub, v, caller,  i1) 
+		} else if function == "update_owner" 			{ return t.update_owner(stub, v, caller,  args[0])
 		} else if function == "update_delivered"  	    { 	i1, err = strconv.Atoi(args[0])
-															return t.update_delivered(stub, v, caller, caller_affiliation, i1)
+															return t.update_delivered(stub, v, caller,  i1)
 		} else if function == "update_status"        	{   i1, err = strconv.Atoi(args[0])
-															return t.update_status(stub, v, caller, caller_affiliation, i1)
-		} else if function == "update_lastlocation" 	{ return t.update_lastlocation(stub, v, caller, caller_affiliation, args[0])
-		} else if function == "update_dispatchdate" 	{ return t.update_dispatchdate(stub, v, caller, caller_affiliation, args[0])
-		} else if function == "update_delivereddate" 	{ return t.update_delivereddate(stub, v, caller, caller_affiliation, args[0])
-		} else if function == "update_dimensions" 		{ return t.update_dimensions(stub, v, caller, caller_affiliation, args[0])
+															return t.update_status(stub, v, caller,  i1)
+		} else if function == "update_lastlocation" 	{ return t.update_lastlocation(stub, v, caller,  args[0])
+		} else if function == "update_dispatchdate" 	{ return t.update_dispatchdate(stub, v, caller,  args[0])
+		} else if function == "update_delivereddate" 	{ return t.update_delivereddate(stub, v, caller,  args[0])
+		} else if function == "update_dimensions" 		{ return t.update_dimensions(stub, v, caller,  args[0])
 		
-		} else if function == "deliver_package" 		{ return t.deliver_package(stub, v, caller, caller_affiliation) }
+		} else if function == "deliver_package" 		{ return t.deliver_package(stub, v, caller) }
 		
 																						return nil, errors.New("Function of that name doesn't exist.")
 			
@@ -376,11 +272,11 @@ func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args
 func (t *SimpleChaincode) Query(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
 													
 	fmt.Printf("Nihal Copy of chaincode running!")
-	caller, caller_affiliation, err := t.get_caller_data(stub)
+	caller, err := t.get_caller_data(stub)
 
 																							if err != nil { fmt.Printf("QUERY: Error retrieving caller details", err); return nil, errors.New("QUERY: Error retrieving caller details: "+err.Error()) }
 														
-	if function == "get_vehicle_details" { 
+	if function == "get_package_details" { 
 	
 			if len(args) != 1 { fmt.Printf("Incorrect number of arguments passed"); return nil, errors.New("QUERY: Incorrect number of arguments passed") }
 	
@@ -388,14 +284,11 @@ func (t *SimpleChaincode) Query(stub *shim.ChaincodeStub, function string, args 
 			v, err := t.retrieve_v5c(stub, args[0])
 																							if err != nil { fmt.Printf("QUERY: Error retrieving v5c: %s", err); return nil, errors.New("QUERY: Error retrieving v5c "+err.Error()) }
 	
-			return t.get_vehicle_details(stub, v, caller, caller_affiliation)
+			return t.get_package_details(stub, v, caller)
 			
-	} else if function == "get_vehicles" {
-			return t.get_vehicles(stub, caller, caller_affiliation)
-	} else if function == "get_ecert" {
-			return t.get_ecert(stub, args[0])
-	}
-
+	} else if function == "get_packages" {
+			return t.get_packages(stub, caller)
+	} 
 	return nil, errors.New("Received unknown function invocation")
 
 }
@@ -405,27 +298,30 @@ func (t *SimpleChaincode) Query(stub *shim.ChaincodeStub, function string, args 
 //=================================================================================================================================									
 //	 Create Vehicle - Creates the initial JSON for the vehcile and then saves it to the ledger.									
 //=================================================================================================================================
-func (t *SimpleChaincode) create_vehicle(stub *shim.ChaincodeStub, caller string, caller_affiliation int, v5cID string) ([]byte, error) {								
+func (t *SimpleChaincode) create_package(stub *shim.ChaincodeStub, caller string, v5cID string) ([]byte, error) {								
 fmt.Printf("Nihal Copy of chaincode running!")
 	var v CargoPack																																										
 	
-	v5c_ID         := "\"v5cID\":\""+v5cID+"\", "							// Variables to define the JSON
-	type2           := "\"Type\":0, "
+	v5c_ID          := "\"v5cID\":\""+v5cID+"\", "							// Variables to define the JSON
+	type2           := "\"Type\":\"UNDEFINED\", "
 	particulars2    := "\"Particulars\":\"UNDEFINED\", "
 	sourcecity2     := "\"SourceCity\":\"UNDEFINED\", "
 	destcity2       := "\"DestCity\":\"UNDEFINED\", "
 	weight2         := "\"Weight\":0, "
 	owner2          := "\"Owner\":\""+caller+"\", "
-	delivered2    	:= "\"Delivered\":\"UNDEFINED\", "
-	status2     	:= "\"Status\":\"UNDEFINED\", "
+	delivered2    	:= "\"Delivered\":0, "
+	status2     	:= "\"Status\":1, "
 	lastlocation2   := "\"LastLocation\":\"UNDEFINED\", "
-	dispatchdate2   := "\"DispatchDate\":0, "
-	delivereddate2  := "\"DeliveredDate\":\""+caller+"\", "
-	dimensions2 	:= "\"Dimensions\":\"UNDEFINED\", "
+	dispatchdate2   := "\"DispatchDate\":\"mm-dd-yyyy\", "
+	delivereddate2  := "\"DeliveredDate\":\"mm-dd-yyyy\", "
+	dimensions2 	:= "\"Dimensions\":\"hh-ww-ll\" "
 	
 	
 	// Concatenate the variables to create the total JSON object
 	vehicle_json := "{"+v5c_ID+type2+particulars2+sourcecity2+destcity2+weight2+owner2+delivered2+status2+lastlocation2+dispatchdate2+delivereddate2+dimensions2+"}" 	
+	
+	
+	fmt.Printf("vehicle_json=%s",vehicle_json)
 	
 	matched, err := regexp.Match("^[A-z][A-z][0-9]{7}", []byte(v5cID))  				// matched = true if the v5cID passed fits format of two letters followed by seven digits
 	
@@ -445,10 +341,6 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	
 																		if record != nil { return nil, errors.New("Vehicle already exists") }
 	
-	if 	caller_affiliation != AUTHORITY {							// Only the regulator can create a new v5c
-
-																		return nil, errors.New("Permission Denied")
-	}
 	
 	_, err  = t.save_changes(stub, v)									
 			
@@ -484,12 +376,10 @@ fmt.Printf("Nihal Copy of chaincode running!")
 //=================================================================================================================================
 //	 authority_to_manufacturer
 //=================================================================================================================================
-func (t *SimpleChaincode) authority_to_manufacturer(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, recipient_name string, recipient_affiliation int) ([]byte, error) {
+func (t *SimpleChaincode) authority_to_manufacturer(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if     	v.Status				== STATE_TEMPLATE	&&
 			v.Owner					== caller			&&
-			caller_affiliation		== AUTHORITY		&&
-			recipient_affiliation	== MANUFACTURER		&&
 			v.Delivered				== 0			{		// If the roles and users are ok 
 	
 					v.Owner  = recipient_name		// then make the owner the new owner
@@ -513,7 +403,7 @@ func (t *SimpleChaincode) authority_to_manufacturer(stub *shim.ChaincodeStub, v 
 //=================================================================================================================================
 //	 manufacturer_to_private
 //=================================================================================================================================
-func (t *SimpleChaincode) manufacturer_to_private(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, recipient_name string, recipient_affiliation int) ([]byte, error) {
+func (t *SimpleChaincode) manufacturer_to_private(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if 		v.Type 	 		== "UNDEFINED" || 					
 			v.Particulars   == "UNDEFINED" || 
@@ -526,8 +416,6 @@ func (t *SimpleChaincode) manufacturer_to_private(stub *shim.ChaincodeStub, v Ca
 	
 	if 		v.Status				== STATE_MANUFACTURE	&& 
 			v.Owner					== caller				&& 
-			caller_affiliation		== MANUFACTURER			&&
-			recipient_affiliation	== PRIVATE_ENTITY		&& 
 			v.Delivered     == 0							{
 			
 					v.Owner = recipient_name
@@ -548,12 +436,10 @@ func (t *SimpleChaincode) manufacturer_to_private(stub *shim.ChaincodeStub, v Ca
 //=================================================================================================================================
 //	 private_to_private
 //=================================================================================================================================
-func (t *SimpleChaincode) private_to_private(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, recipient_name string, recipient_affiliation int) ([]byte, error) {
+func (t *SimpleChaincode) private_to_private(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if 		v.Status				== STATE_PRIVATE_OWNERSHIP	&&
 			v.Owner					== caller					&&
-			caller_affiliation		== PRIVATE_ENTITY			&& 
-			recipient_affiliation	== PRIVATE_ENTITY			&&
 			v.Delivered				== 0					{
 			
 					v.Owner = recipient_name
@@ -575,12 +461,10 @@ func (t *SimpleChaincode) private_to_private(stub *shim.ChaincodeStub, v CargoPa
 //=================================================================================================================================
 //	 private_to_lease_company
 //=================================================================================================================================
-func (t *SimpleChaincode) private_to_lease_company(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, recipient_name string, recipient_affiliation int) ([]byte, error) {
+func (t *SimpleChaincode) private_to_lease_company(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if 		v.Status				== STATE_PRIVATE_OWNERSHIP	&& 
 			v.Owner					== caller					&& 
-			caller_affiliation		== PRIVATE_ENTITY			&& 
-			recipient_affiliation	== LEASE_COMPANY			&& 
 			v.Delivered     			== 0					{
 		
 					v.Owner = recipient_name
@@ -599,12 +483,10 @@ func (t *SimpleChaincode) private_to_lease_company(stub *shim.ChaincodeStub, v C
 //=================================================================================================================================
 //	 lease_company_to_private
 //=================================================================================================================================
-func (t *SimpleChaincode) lease_company_to_private(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, recipient_name string, recipient_affiliation int) ([]byte, error) {
+func (t *SimpleChaincode) lease_company_to_private(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if		v.Status				== STATE_PRIVATE_OWNERSHIP	&&
 			v.Owner  				== caller					&& 
-			caller_affiliation		== LEASE_COMPANY			&& 
-			recipient_affiliation	== PRIVATE_ENTITY			&& 
 			v.Delivered				== 0					{
 		
 				v.Owner = recipient_name
@@ -623,12 +505,10 @@ func (t *SimpleChaincode) lease_company_to_private(stub *shim.ChaincodeStub, v C
 //=================================================================================================================================
 //	 private_to_scrap_merchant
 //=================================================================================================================================
-func (t *SimpleChaincode) private_to_scrap_merchant(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, recipient_name string, recipient_affiliation int) ([]byte, error) {
+func (t *SimpleChaincode) private_to_scrap_merchant(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if		v.Status				== STATE_PRIVATE_OWNERSHIP	&&
 			v.Owner					== caller					&& 
-			caller_affiliation		== PRIVATE_ENTITY			&& 
-			recipient_affiliation	== SCRAP_MERCHANT			&&
 			v.Delivered				== 0					{
 			
 					v.Owner = recipient_name
@@ -653,17 +533,16 @@ func (t *SimpleChaincode) private_to_scrap_merchant(stub *shim.ChaincodeStub, v 
 //=================================================================================================================================
 //	 Read Functions
 //=================================================================================================================================
-//	 get_vehicle_details
+//	 get_package_details
 //=================================================================================================================================
-func (t *SimpleChaincode) get_vehicle_details(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int) ([]byte, error) {
+func (t *SimpleChaincode) get_package_details(stub *shim.ChaincodeStub, v CargoPack, caller string) ([]byte, error) {
 	fmt.Printf("Nihal Copy of chaincode running!")
 	bytes, err := json.Marshal(v)
 	
 																if err != nil { return nil, errors.New("GET_VEHICLE_DETAILS: Invalid vehicle object") }
 																
-	if 		v.Owner				== caller		||
-			caller_affiliation	== AUTHORITY	{
-			
+	if 		v.Owner	== caller		{
+				
 					return bytes, nil		
 	} else {
 																return nil, errors.New("Permission Denied")	
@@ -672,10 +551,10 @@ func (t *SimpleChaincode) get_vehicle_details(stub *shim.ChaincodeStub, v CargoP
 }
 
 //=================================================================================================================================
-//	 get_vehicle_details
+//	 get_package_details
 //=================================================================================================================================
 
-func (t *SimpleChaincode) get_vehicles(stub *shim.ChaincodeStub, caller string, caller_affiliation int) ([]byte, error) {
+func (t *SimpleChaincode) get_packages(stub *shim.ChaincodeStub, caller string) ([]byte, error) {
 
 fmt.Printf("Nihal Copy of chaincode running!")
 	bytes, err := stub.GetState("v5cIDs")
@@ -699,7 +578,7 @@ fmt.Printf("Nihal Copy of chaincode running!")
 		
 		if err != nil {return nil, errors.New("Failed to retrieve V5C")}
 		
-		temp, err = t.get_vehicle_details(stub, v, caller, caller_affiliation)
+		temp, err = t.get_package_details(stub, v, caller)
 		
 		if err == nil {
 			result += string(temp) + ","	
@@ -723,10 +602,11 @@ fmt.Printf("Nihal Copy of chaincode running!")
 //=================================================================================================================================
 //	 update_type
 //=================================================================================================================================
-func (t *SimpleChaincode) update_type(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_type(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
+		fmt.Printf("update_type called")
+		
 		if 	v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
 			v.Delivered			== 0				{
 			
 					v.Type = new_value
@@ -747,10 +627,11 @@ func (t *SimpleChaincode) update_type(stub *shim.ChaincodeStub, v CargoPack, cal
 //	 update_particulars
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_particulars(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_particulars(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
+	
+	fmt.Printf("update_particulars called")
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
 			v.Delivered			== 0				{
 			
 					v.Particulars = new_value
@@ -770,10 +651,9 @@ func (t *SimpleChaincode) update_particulars(stub *shim.ChaincodeStub, v CargoPa
 //=================================================================================================================================
 //	 update_sourcecity
 //=================================================================================================================================
-func (t *SimpleChaincode) update_sourcecity(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_sourcecity(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
 			v.Delivered			== 0				{
 			
 					v.SourceCity = new_value
@@ -793,10 +673,9 @@ func (t *SimpleChaincode) update_sourcecity(stub *shim.ChaincodeStub, v CargoPac
 //	 update_particulars
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_destcity(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_destcity(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
 			v.Delivered			== 0				{
 			
 					v.DestCity = new_value
@@ -815,10 +694,9 @@ func (t *SimpleChaincode) update_destcity(stub *shim.ChaincodeStub, v CargoPack,
 //=================================================================================================================================
 //	 update_weight
 //=================================================================================================================================
-func (t *SimpleChaincode) update_weight(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value int) ([]byte, error) {
+func (t *SimpleChaincode) update_weight(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value int) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
 			v.Delivered			== 0				{
 			
 					v.Weight = new_value
@@ -835,13 +713,13 @@ func (t *SimpleChaincode) update_weight(stub *shim.ChaincodeStub, v CargoPack, c
 }
 
 //=================================================================================================================================
-//	 update_owner
+//	 update_owner ** NOTE: This method may not be used as the ownership is update is handled by transfer functions defined 
+// 					       below in this program.
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_owner(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_owner(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
 			v.Delivered			== 0				{
 			
 					v.Owner = new_value
@@ -860,10 +738,9 @@ func (t *SimpleChaincode) update_owner(stub *shim.ChaincodeStub, v CargoPack, ca
 //=================================================================================================================================
 //	 update_delivered
 //=================================================================================================================================
-func (t *SimpleChaincode) update_delivered(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value int) ([]byte, error) {
+func (t *SimpleChaincode) update_delivered(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value int) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
 			v.Delivered			== 0				{
 			
 					v.Delivered = new_value
@@ -883,10 +760,9 @@ func (t *SimpleChaincode) update_delivered(stub *shim.ChaincodeStub, v CargoPack
 //	 update_status
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_status(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value int) ([]byte, error) {
+func (t *SimpleChaincode) update_status(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value int) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
 			v.Delivered			== 0				{
 			
 					v.Status = new_value
@@ -905,10 +781,9 @@ func (t *SimpleChaincode) update_status(stub *shim.ChaincodeStub, v CargoPack, c
 //=================================================================================================================================
 //	 update_lastlocation
 //=================================================================================================================================
-func (t *SimpleChaincode) update_lastlocation(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_lastlocation(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
 			v.Delivered			== 0				{
 			
 					v.LastLocation = new_value
@@ -928,10 +803,9 @@ func (t *SimpleChaincode) update_lastlocation(stub *shim.ChaincodeStub, v CargoP
 //	 update_dispatchdate
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_dispatchdate(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_dispatchdate(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
 		if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner					== caller				&& 
-			caller_affiliation		== MANUFACTURER			&&
 			v.Delivered				== 0				{
 			
 					v.DispatchDate = new_value
@@ -950,10 +824,9 @@ func (t *SimpleChaincode) update_dispatchdate(stub *shim.ChaincodeStub, v CargoP
 //=================================================================================================================================
 //	 update_delivereddate
 //=================================================================================================================================
-func (t *SimpleChaincode) update_delivereddate(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_delivereddate(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
 			v.Delivered			== 0				{
 			
 					v.DeliveredDate = new_value
@@ -973,10 +846,9 @@ func (t *SimpleChaincode) update_delivereddate(stub *shim.ChaincodeStub, v Cargo
 //	 update_dimensions
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_dimensions(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_dimensions(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
-			caller_affiliation	== MANUFACTURER			&&
 			v.Delivered			== 0				{
 			
 					v.Dimensions = new_value
@@ -995,11 +867,10 @@ func (t *SimpleChaincode) update_dimensions(stub *shim.ChaincodeStub, v CargoPac
 //=================================================================================================================================
 //	 deliver_package
 //=================================================================================================================================
-func (t *SimpleChaincode) deliver_package(stub *shim.ChaincodeStub, v CargoPack, caller string, caller_affiliation int) ([]byte, error) {
+func (t *SimpleChaincode) deliver_package(stub *shim.ChaincodeStub, v CargoPack,caller string) ([]byte, error) {
 fmt.Printf("Nihal Copy of chaincode running!")
 	if		v.Status			== STATE_BEING_SCRAPPED	&& 
 			v.Owner				== caller				&& 
-			caller_affiliation	== SCRAP_MERCHANT		&& 
 			v.Delivered			== 0				{
 		
 					v.Delivered = 1

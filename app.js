@@ -33,8 +33,10 @@ var blocks 			= require(__dirname+'/Server_Side/blockchain/blocks/blocks.js');
 var block 			= require(__dirname+'/Server_Side/blockchain/blocks/block/block.js');
 var participants 	= require(__dirname+'/Server_Side/blockchain/participants/participants.js');
 var identity 	 	= require(__dirname+'/Server_Side/admin/identity/identity.js');
-var vehicles	 	= require(__dirname+'/Server_Side/blockchain/assets/vehicles/vehicles.js')
-var vehicle 	 	= require(__dirname+'/Server_Side/blockchain/assets/vehicles/vehicle/vehicle.js')
+//var vehicles	 	= require(__dirname+'/Server_Side/blockchain/assets/vehicles/vehicles.js')
+//var vehicle 	 	= require(__dirname+'/Server_Side/blockchain/assets/vehicles/vehicle/vehicle.js')
+var cargopacks	 	= require(__dirname+'/Server_Side/blockchain/assets/vehicles/vehicles.js')
+var cargopack 	 	= require(__dirname+'/Server_Side/blockchain/assets/vehicles/vehicle/vehicle.js')
 var demo 	 		= require(__dirname+'/Server_Side/admin/demo/demo.js')
 var chaincode 	 	= require(__dirname+'/Server_Side/blockchain/chaincode/chaincode.js')
 var transactions 	= require(__dirname+'/Server_Side/blockchain/transactions/transactions.js');
@@ -95,9 +97,14 @@ app.get('/admin/demo', function(req, res)
 //-----------------------------------------------------------------------------------------------
 //	Blockchain - chaincode
 //-----------------------------------------------------------------------------------------------
-app.post('/blockchain/chaincode/vehicles', function(req, res){
-	chaincode.vehicles.create(req, res)
+//app.post('/blockchain/chaincode/vehicles', function(req, res){
+//	chaincode.vehicles.create(req, res)
+//});
+app.post('/blockchain/chaincode/cargopacks', function(req, res){
+	chaincode.cargopacks.create(req, res)
 });
+
+
 
 //-----------------------------------------------------------------------------------------------
 //	Blockchain - Blocks
@@ -113,49 +120,66 @@ app.get('/blockchain/blocks/:blockNum(\\d+)', function(req, res){
 //-----------------------------------------------------------------------------------------------
 //	Blockchain - Assets - Vehicles
 //-----------------------------------------------------------------------------------------------
-app.post('/blockchain/assets/vehicles' , function(req,res)
+//app.post('/blockchain/assets/vehicles' , function(req,res)
+//{
+//	vehicles.create(req,res)
+//});
+
+//app.get('/blockchain/assets/vehicles' , function(req,res)
+//{
+//	vehicles.read(req,res)
+//});
+app.post('/blockchain/assets/cargopacks' , function(req,res)
 {
-	vehicles.create(req,res)
+	cargopacks.create(req,res)
 });
 
-app.get('/blockchain/assets/vehicles' , function(req,res)
+app.get('/blockchain/assets/cargopacks' , function(req,res)
 {
-	vehicles.read(req,res)
+	cargopacks.read(req,res)
 });
+
 
 //-----------------------------------------------------------------------------------------------
 //	Blockchain - Assets - Vehicles - Vehicle
 //-----------------------------------------------------------------------------------------------
 
-app.get('/blockchain/assets/vehicles/:v5cID' , function(req,res)
+//app.get('/blockchain/assets/vehicles/:v5cID' , function(req,res)
+//{
+//	vehicle.read(req,res)
+//});
+app.get('/blockchain/assets/cargopacks/:v5cID' , function(req,res)
 {
-	vehicle.read(req,res)
+	cargopack.read(req,res)
 });
+
 
 //-----------------------------------------------------------------------------------------------
 //	Blockchain - Assets - Vehicles - Vehicle - Owner
 //-----------------------------------------------------------------------------------------------
-app.get('/blockchain/assets/vehicles/:v5cID/owner' , function(req,res)
+app.get('/blockchain/assets/cargopacks/:v5cID/owner' , function(req,res)
 {
-	vehicle.owner.read(req,res)
+	cargopack.owner.read(req,res)
 });
 
-app.put('/blockchain/assets/vehicles/:v5cID/owner' , function(req,res)
+app.put('/blockchain/assets/cargopacks/:v5cID/owner' , function(req,res)
 {
-	vehicle.owner.update(req,res)
+	cargopack.owner.update(req,res)
 });
 
+/* COMMENTING OUT EXISTING "vehicles" METHODS 
+   THEY WILL BE REPLACED WITH CORRESPONDING METHODS FOR "cargopacks" structure
 //-----------------------------------------------------------------------------------------------
 //	Blockchain - Assets - Vehicles - Vehicle - VIN
 //-----------------------------------------------------------------------------------------------
-app.get('/blockchain/assets/vehicles/:v5cID/VIN' , function(req,res)
+app.get('/blockchain/assets/cargopacks/:v5cID/VIN' , function(req,res)
 {
-	vehicle.VIN.read(req,res)
+	cargopack.VIN.read(req,res)
 });
 
-app.put('/blockchain/assets/vehicles/:v5cID/VIN' , function(req,res)
+app.put('/blockchain/assets/cargopacks/:v5cID/VIN' , function(req,res)
 {
-	vehicle.VIN.update(req,res)
+	cargopack.VIN.update(req,res)
 });
 
 //-----------------------------------------------------------------------------------------------
@@ -224,17 +248,150 @@ app.get('/blockchain/assets/vehicles/:v5cID/scrap' , function(req,res)
 	vehicle.scrapped.read(req,res)
 });
 
+*/
+
 //-----------------------------------------------------------------------------------------------
-//	**Nihal test API call ** Blockchain - Assets - Vehicles - Vehicle - deletethisprop 
+//	Blockchain - Assets - Cargopacks - Type
 //-----------------------------------------------------------------------------------------------
-app.put('/blockchain/assets/vehicles/:v5cID/deletethisprop' , function(req,res)
+app.get('/blockchain/assets/cargopacks/:v5cID/type' , function(req,res)
 {
-	vehicle.deletethisprop.update(req,res)
+	cargopack.type.read(req,res)
 });
 
-app.get('/blockchain/assets/vehicles/:v5cID/deletethisprop' , function(req,res)
+app.put('/blockchain/assets/cargopacks/:v5cID/type' , function(req,res)
 {
-	vehicle.deletethisprop.read(req,res)
+	cargopack.type.update(req,res)
+});
+
+
+//-----------------------------------------------------------------------------------------------
+//	Blockchain - Assets - Cargopacks - particulars
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/cargopacks/:v5cID/particulars' , function(req,res)
+{
+	cargopack.particulars.read(req,res)
+});
+
+app.put('/blockchain/assets/cargopacks/:v5cID/particulars' , function(req,res)
+{
+	cargopack.particulars.update(req,res)
+});
+
+//-----------------------------------------------------------------------------------------------
+//	Blockchain - Assets - Cargopacks - SourceCity
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/cargopacks/:v5cID/sourcecity' , function(req,res)
+{
+	cargopack.sourcecity.read(req,res)
+});
+
+app.put('/blockchain/assets/cargopacks/:v5cID/sourcecity' , function(req,res)
+{
+	cargopack.sourcecity.update(req,res)
+});
+
+//-----------------------------------------------------------------------------------------------
+//	Blockchain - Assets - Cargopacks - DestCity
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/cargopacks/:v5cID/destcity' , function(req,res)
+{
+	cargopack.destcity.read(req,res)
+});
+
+app.put('/blockchain/assets/cargopacks/:v5cID/destcity' , function(req,res)
+{
+	cargopack.destcity.update(req,res)
+});
+
+//-----------------------------------------------------------------------------------------------
+//	Blockchain - Assets - Cargopacks - Weight
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/cargopacks/:v5cID/weight' , function(req,res)
+{
+	cargopack.weight.read(req,res)
+});
+
+app.put('/blockchain/assets/cargopacks/:v5cID/weight' , function(req,res)
+{
+	cargopack.weight.update(req,res)
+});
+
+//-----------------------------------------------------------------------------------------------
+//	Blockchain - Assets - Cargopacks - Delivered
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/cargopacks/:v5cID/delivered' , function(req,res)
+{
+	cargopack.delivered.read(req,res)
+});
+
+app.put('/blockchain/assets/cargopacks/:v5cID/delivered' , function(req,res)
+{
+	cargopack.delivered.update(req,res)
+});
+
+//-----------------------------------------------------------------------------------------------
+//	Blockchain - Assets - Cargopacks - Status
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/cargopacks/:v5cID/status' , function(req,res)
+{
+	cargopack.stat.read(req,res)
+});
+
+app.put('/blockchain/assets/cargopacks/:v5cID/status' , function(req,res)
+{
+	cargopack.stat.update(req,res)
+});
+
+//-----------------------------------------------------------------------------------------------
+//	Blockchain - Assets - Cargopacks - LastLocation
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/cargopacks/:v5cID/lastlocation' , function(req,res)
+{
+	cargopack.lastlocation.read(req,res)
+});
+
+app.put('/blockchain/assets/cargopacks/:v5cID/lastlocation' , function(req,res)
+{
+	cargopack.lastlocation.update(req,res)
+});
+
+//-----------------------------------------------------------------------------------------------
+//	Blockchain - Assets - Cargopacks - DispatchDate
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/cargopacks/:v5cID/dispatchdate' , function(req,res)
+{
+	cargopack.dispatchdate.read(req,res)
+});
+
+app.put('/blockchain/assets/cargopacks/:v5cID/dispatchdate' , function(req,res)
+{
+	cargopack.dispatchdate.update(req,res)
+});
+
+//-----------------------------------------------------------------------------------------------
+//	Blockchain - Assets - Cargopacks - DeliveredDate
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/cargopacks/:v5cID/delivereddate' , function(req,res)
+{
+	cargopack.delivereddate.read(req,res)
+});
+
+app.put('/blockchain/assets/cargopacks/:v5cID/delivereddate' , function(req,res)
+{
+	cargopack.delivereddate.update(req,res)
+});
+
+//-----------------------------------------------------------------------------------------------
+//	Blockchain - Assets - Cargopacks - Dimension
+//-----------------------------------------------------------------------------------------------
+app.get('/blockchain/assets/cargopacks/:v5cID/dimensions' , function(req,res)
+{
+	cargopack.dimensions.read(req,res)
+});
+
+app.put('/blockchain/assets/cargopacks/:v5cID/dimensions' , function(req,res)
+{
+	cargopack.dimensions.update(req,res)
 });
 
 
@@ -253,25 +410,47 @@ app.get('/blockchain/participants/regulators', function(req, res){
 	participants.regulators.read(req,res);
 });
 
-app.get('/blockchain/participants/manufacturers', function(req, res){
-	participants.manufacturers.read(req,res);
+//app.get('/blockchain/participants/manufacturers', function(req, res){
+//	participants.manufacturers.read(req,res);
+//});
+app.get('/blockchain/participants/suppliers', function(req, res){
+	participants.suppliers.read(req,res);
 });
 
-app.get('/blockchain/participants/dealerships', function(req, res){
-	participants.dealerships.read(req,res);
+
+//app.get('/blockchain/participants/dealerships', function(req, res){
+//	participants.dealerships.read(req,res);
+//});
+
+app.get('/blockchain/participants/warehouse', function(req, res){
+	participants.warehouse.read(req,res);
 });
 
-app.get('/blockchain/participants/lease_companies', function(req, res){
-	participants.lease_companies.read(req,res);
+//app.get('/blockchain/participants/lease_companies', function(req, res){
+//	participants.lease_companies.read(req,res);
+//});
+
+app.get('/blockchain/participants/airports', function(req, res){
+	participants.airports.read(req,res);
 });
 
-app.get('/blockchain/participants/leasees', function(req, res){
-	participants.leasees.read(req,res);
+
+//app.get('/blockchain/participants/scrap_merchants', function(req, res){
+//	participants.scrap_merchants.read(req,res);
+//});
+
+app.get('/blockchain/participants/delivery', function(req, res){
+	participants.delivery.read(req,res);
 });
 
-app.get('/blockchain/participants/scrap_merchants', function(req, res){
-	participants.scrap_merchants.read(req,res);
+//app.get('/blockchain/participants/scrap_merchants', function(req, res){
+//	participants.scrap_merchants.read(req,res);
+//});
+
+app.get('/blockchain/participants/buyer', function(req, res){
+	participants.buyer.read(req,res);
 });
+
 
 
 //-----------------------------------------------------------------------------------------------

@@ -13,10 +13,10 @@ var participants_info = {
 			"postcode": "SA7 0AN"
 		}
 	],
-	"manufacturers": [
+	"suppliers": [
 		{
-			"name": "Alfa Romeo",
-			"identity": "Alfa_Romeo",
+			"name": "Super Stores99",
+			"identity": "Super_Stores_99",
 			"password": "fGMMQqWEPxVy",
 			"address_line_1": "25 St James's Street",
 			"address_line_2": "London",
@@ -24,8 +24,8 @@ var participants_info = {
 			"postcode": "SW1A 1HA"
 		},
 		{
-			"name": "Toyota",
-			"identity": "Toyota",
+			"name": "Mix and Match",
+			"identity": "MixAndMatch",
 			"password": "hTpPFxiOwWgS",
 			"address_line_1": "Burnaston",
 			"address_line_2": "Derby",
@@ -33,29 +33,18 @@ var participants_info = {
 			"postcode": "DE1 9TA"
 		},
 		{
-			"name": "Jaguar Land Rover",
-			"identity": "Jaguar_Land_Rover",
+			"name": "Panther Stores",
+			"identity": "Panther_Stores",
 			"password": "nNRyjPKrSpUb",
 			"address_line_1": "Abbey Road",
 			"address_line_2": "Coventry",
 			"address_line_3": "United Kingdom",
 			"postcode": "CV3 4LF"
-		},
-		{
-			"name": "Nihal Ansari Corp",
-			"identity": "Nihal_Ansari_Corp",
-			"password": "nNRyjPKrSpUb",
-			"address_line_1": "City Of York",
-			"address_line_2": "Yorkshire",
-			"address_line_3": "United Kingdom",
-			"postcode": "YO31 7PN"
 		}
-
-
-		],
-	"dealerships": [
+	],
+	"warehouse": [
 		{
-			"name": "Beechvale Group",
+			"name": "Amazon Beechvale",
 			"identity": "Beechvale_Group",
 			"password": "TvNWKDgWTrfH",
 			"address_line_1": "84 Hull Road",
@@ -63,7 +52,7 @@ var participants_info = {
 			"postcode": "DE75 4PJ"
 		},
 		{
-			"name": "Milescape",
+			"name": "Amazon Milescape",
 			"identity": "Milescape",
 			"password": "cGJslZqjNjPK",
 			"address_line_1": "Imperial Yard",
@@ -71,7 +60,7 @@ var participants_info = {
 			"postcode": "DE94 8HY"
 		},
 		{
-			"name": "Viewers Alfa Romeo",
+			"name": "Amazon Viewers",
 			"identity": "Viewers_Alfa_Romeo",
 			"password": "VWjFucyEIzTn",
 			"address_line_1": "25 Lower Lens Street",
@@ -81,37 +70,37 @@ var participants_info = {
 			"postcode": "CF28 9LC"
 		}
 	],
-	"lease_companies": [
+	"airports": [
 		{
-			"name": "LeaseCan",
-			"identity": "LeaseCan",
+			"name": "London Heathrow",
+			"identity": "LHR",
 			"password": "mRbbQTpZfVVa",
-			"address_line_1": "64 Zoo Lane",
-			"address_line_2": "Slough",
-			"address_line_3": "Berkshire",
-			"postcode": "SL82 4AB"
+			"address_line_1": "London",
+			"address_line_2": "UK",
+			"address_line_3": "",
+			"postcode": ""
 		},
 		{
-			"name": "Every Car Leasing",
-			"identity": "Every_Car_Leasing",
+			"name": "Manchester",
+			"identity": "MAN",
 			"password": "KakjewJfwBSq",
-			"address_line_1": "9 Main Road",
-			"address_line_2": "Mobberly",
-			"address_line_3": "Cheshire",
-			"postcode": "WA18 7KJ"
+			"address_line_1": "Manchester",
+			"address_line_2": "Yorkshire",
+			"address_line_3": "",
+			"postcode": ""
 		},
 		{
-			"name": "Regionwide Vehicle Contracts",
-			"identity": "Regionwide_Vehicle_Contracts",
+			"name": "LiverPool",
+			"identity": "LPL",
 			"password": "plqOUyoFTZyK",
-			"address_line_1": "Unit 9",
-			"address_line_2": "Malcom Christie Way",
-			"address_line_3": "Riggot Fields",
-			"address_line_4": "Manchester",
-			"postcode": "M21 15QY"
+			"address_line_1": "LiverPool",
+			"address_line_2": "UK",
+			"address_line_3": "",
+			"address_line_4": "",
+			"postcode": ""
 		}
 	],
-	"leasees": [
+	"buyer": [
 		{
 			"name": "Joe Payne",
 			"identity": "Joe_Payne",
@@ -137,7 +126,7 @@ var participants_info = {
 			"postcode": "SO50 3QV"
 		}
 	],
-	"scrap_merchants": [
+	"delivery": [
 		{
 			"name": "Cray Bros (London) Ltd",
 			"identity": "Cray_Bros_London_Ltd",
@@ -148,8 +137,8 @@ var participants_info = {
 			"postcode": "SE51 9DR"
 		},
 		{
-			"name": "Aston Scrap Centre",
-			"identity": "Aston_Scrap_Centre",
+			"name": "Aston Last Mile Service",
+			"identity": "Aston_Last_Mile_Service",
 			"password": "AzdeAZuGtlUT",
 			"address_line_1": "11 Willow Park Way",
 			"address_line_2": "Aston on Trent",
@@ -157,8 +146,8 @@ var participants_info = {
 			"postcode": "DE72 2DG"
 		},
 		{
-			"name": "ScrapIt! UK",
-			"identity": "ScrapIt_UK",
+			"name": "MoveIt! UK",
+			"identity": "MoveIt_UK",
 			"password": "WDYJcenyScyC",
 			"address_line_1": "25 Lincoln Road",
 			"address_line_2": "Winchester",

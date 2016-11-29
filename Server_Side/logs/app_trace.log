@@ -211,3 +211,516 @@
 	04/08/2016 16:58:26	INFO	POST blockchain/assets/vehicles	Checking V5cID is unique
 	04/08/2016 16:58:33	INFO	POST blockchain/assets/vehicles	Generated V5cID: OU4111612
 	04/08/2016 16:58:33	INFO	POST blockchain/assets/vehicles	Checking V5cID is unique
+10/11/2016 00:32:38	ENTER	Startup	INPUT: {}
+	10/11/2016 00:32:38	INFO	Startup	Locating initial participants
+	10/11/2016 00:32:38	INFO	Startup	Failed to register using HFC, user may have already been enrolled. Error
+	10/11/2016 00:32:43	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:32:49	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:32:55	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:33:01	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:33:06	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:33:12	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:33:17	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:33:23	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:33:29	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:33:34	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:33:40	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+10/11/2016 00:46:35	ENTER	Startup	INPUT: {}
+	10/11/2016 00:46:35	INFO	Startup	Locating initial participants
+	10/11/2016 00:46:35	INFO	Startup	Failed to register using HFC, user may have already been enrolled. Error
+	10/11/2016 00:46:40	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:46:46	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:46:51	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:46:57	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:47:03	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:47:08	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:47:14	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:47:19	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:47:24	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:47:30	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:47:36	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:47:41	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:47:47	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:47:52	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:47:58	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:48:03	INFO	Startup	Getting initial height of the blockchain
+	10/11/2016 00:48:03	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:48:08	INFO	Startup	Deploying vehicle chaincode
+	10/11/2016 00:48:08	INFO	Startup	Updating config file
+	10/11/2016 00:48:08	ERROR	Startup	OUTPUT: {"message":"Error deploying vehicle chaincode","body":{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":"Chaincode name may not be blank in development mode."},"id":12},"error":true}
+10/11/2016 00:49:33	ENTER	GET blockchain/blocks	INPUT: {}
+10/11/2016 00:49:33	EXIT	GET blockchain/blocks	OUTPUT: {"height":496,"currentBlockHash":"FtnVyE57jJI5SIkgtG0HwUkMCvgZZCtjJj5ZNsqdj98aVOCuBaGSB/+JW81JDQUkj3rH69QdigPl4VViX+upAA=="}
+10/11/2016 00:49:36	ENTER	GET blockchain/blocks	INPUT: {}
+10/11/2016 00:49:36	EXIT	GET blockchain/blocks	OUTPUT: {"height":496,"currentBlockHash":"FtnVyE57jJI5SIkgtG0HwUkMCvgZZCtjJj5ZNsqdj98aVOCuBaGSB/+JW81JDQUkj3rH69QdigPl4VViX+upAA=="}
+10/11/2016 00:49:36	ENTER	GET blockchain/blocks/495	INPUT: {}
+10/11/2016 00:49:36	EXIT	GET blockchain/blocks/495	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDVDEglDRzExMDgxNjQqA2ppbQ==","uuid":"b73624bd-63c6-429f-8e81-da28c3a27301","timestamp":{"seconds":1478687560,"nanos":178600019}}],"stateHash":"Sqrn8E/A/NamR4hXBjh4NXrB5tHzbFrNz1pPYt+YaeAm00ZHEHoNxxldAp/pluegU0km7t8iLdoSiyXRVOo6QA==","previousBlockHash":"lQJlhVDfQJR6SyMj1is2ScYoi6l0G068OXpS1zEqls/XExiIDhwNjkHccxFz9lSGQ3Z61lU8/X0sI1BVwamR2w==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687561,"nanos":202449139}}}}
+10/11/2016 00:49:36	ENTER	GET blockchain/blocks/494	INPUT: {}
+10/11/2016 00:49:36	EXIT	GET blockchain/blocks/494	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDRDEglDRzExMDgxNjMqA2ppbQ==","uuid":"db2ee03e-f8cd-493c-b403-981688cad0e6","timestamp":{"seconds":1478687548,"nanos":501286842}}],"stateHash":"WMlOX2RwNQQFjWbXGqo/fLbzW1+kxZmpoeZ1F5h7fBtzeR752/npUvNA8ZxxxBwce0XJTVsHwhj7U9ceNQlEVA==","previousBlockHash":"LDIdtDIdlHmz3ytWXhnWgDG3iYI5oN1W3ezffNIypFUo8fIP5nbQNItLERjG67Wdxid21lG+vbNyLpj+0gVKtg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687549,"nanos":516053244}}}}
+10/11/2016 00:49:36	ENTER	GET blockchain/blocks/493	INPUT: {}
+10/11/2016 00:49:36	EXIT	GET blockchain/blocks/493	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjAIARIKEghUVGNhcmdvMRobCg5jcmVhdGVfcGFja2FnZRIJQ0cxMTA4MTY0KgNqaW0=","uuid":"ca137b3a-92ee-4bec-9bd7-0733c6d2c176","timestamp":{"seconds":1478687502,"nanos":158134575}}],"stateHash":"jTfYvP8NuidLZKatnoK8lecVmNVN3tI2nBqR//0sXGWYcFpF5fseocHBuyYmufTWm1sgTkepJKg8QBFbDA7r4g==","previousBlockHash":"s2WdU8oRtpXpV06g2eKVm8Aysqt1kOMR9nyhEWHYaRxrm9qTxV+XFJGNbdkTAw93otgfI6hG+JCryQOf1guuCg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687503,"nanos":278403771}}}}
+10/11/2016 00:49:36	ENTER	GET blockchain/blocks/492	INPUT: {}
+10/11/2016 00:49:36	EXIT	GET blockchain/blocks/492	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjAIARIKEghUVGNhcmdvMRobCg5jcmVhdGVfcGFja2FnZRIJQ0cxMTA4MTYzKgNqaW0=","uuid":"9171c63a-e855-4da6-9ed7-323d585a461f","timestamp":{"seconds":1478687484,"nanos":703801135}}],"stateHash":"1SRrVY8O0lPJVdsp2onVYhj3sm4BuOSikFJPKPnYG1uEBrBfEM9ZhRRGzwJOr/z/sR8v0W99mMfRZzmBgqCiVg==","previousBlockHash":"wV/Y836DvotM0IDzOEnFK7bFCI75NrnH6NyyRQzmaS+qyFSrt35H8Q7uY4tkR2OparOklYwm8nKbqEUv9TagBg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687485,"nanos":731210205}}}}
+10/11/2016 00:49:36	ENTER	GET blockchain/blocks/491	INPUT: {}
+10/11/2016 00:49:36	EXIT	GET blockchain/blocks/491	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDNDEglDRzExMDgxNjIqA2ppbQ==","uuid":"b222cc45-1108-41e4-88b8-2b623aaaea3e","timestamp":{"seconds":1478687443,"nanos":1133343}}],"stateHash":"TxqyEkA0t9yC2khvrPDG2XbaGtaxxO/IIW5Ab3sIJ5gfMbJhZrlssbJy5aFlhLDFBNHVQNG/efjMTsDeyioh7w==","previousBlockHash":"hMrcfTrHcW9hsE/ga++xKSbyGwciqJGNVSSdA1R+j/ZgA3Eyr6OIM3jQjHHJl6qVUU8/AdsellTvZ3Ad72i41w==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687444,"nanos":46224269}}}}
+10/11/2016 00:49:36	ENTER	GET blockchain/blocks/490	INPUT: {}
+10/11/2016 00:49:36	EXIT	GET blockchain/blocks/490	OUTPUT: {"block":{"stateHash":"yj16mNkP7yC9Zm+7fQJpQakWv6o++Gz7sZhtdibwAwxjqO+Yqbso6ID/wRYaaxuhLKuzr95QevSLwWQekLCq+A==","previousBlockHash":"o3asdtTAoJxh3eKGb7Lpz0HjwuxhoBtyunnIxKZEbWEumezQZmC5EdqrP36xcTwc09GuX8qO0IM8ebwWP/24QQ==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687202,"nanos":701029586}}}}
+	10/11/2016 00:50:25	INFO	Startup	Locating initial participants
+10/11/2016 00:50:25	ENTER	Startup	INPUT: {}
+	10/11/2016 00:50:25	INFO	Startup	Failed to register using HFC, user may have already been enrolled. Error
+	10/11/2016 00:50:30	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:50:36	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:50:41	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:50:47	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:50:53	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:50:59	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:51:05	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:51:11	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:51:16	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:51:20	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:51:26	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:51:32	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:51:37	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:51:43	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:51:49	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:51:55	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 00:51:55	INFO	Startup	Getting initial height of the blockchain
+	10/11/2016 00:52:00	INFO	Startup	Updating config file
+	10/11/2016 00:52:00	INFO	Startup	Deploying vehicle chaincode
+	10/11/2016 00:52:00	ERROR	Startup	OUTPUT: {"message":"Error deploying vehicle chaincode","body":{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":"Chaincode name may not be blank in development mode."},"id":12},"error":true}
+10/11/2016 01:00:27	ENTER	GET blockchain/blocks	INPUT: {}
+10/11/2016 01:00:27	EXIT	GET blockchain/blocks	OUTPUT: {"height":496,"currentBlockHash":"FtnVyE57jJI5SIkgtG0HwUkMCvgZZCtjJj5ZNsqdj98aVOCuBaGSB/+JW81JDQUkj3rH69QdigPl4VViX+upAA=="}
+10/11/2016 01:00:32	ENTER	GET blockchain/blocks	INPUT: {}
+10/11/2016 01:00:32	EXIT	GET blockchain/blocks	OUTPUT: {"height":496,"currentBlockHash":"FtnVyE57jJI5SIkgtG0HwUkMCvgZZCtjJj5ZNsqdj98aVOCuBaGSB/+JW81JDQUkj3rH69QdigPl4VViX+upAA=="}
+10/11/2016 01:00:32	ENTER	GET blockchain/blocks/495	INPUT: {}
+10/11/2016 01:00:32	EXIT	GET blockchain/blocks/495	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDVDEglDRzExMDgxNjQqA2ppbQ==","uuid":"b73624bd-63c6-429f-8e81-da28c3a27301","timestamp":{"seconds":1478687560,"nanos":178600019}}],"stateHash":"Sqrn8E/A/NamR4hXBjh4NXrB5tHzbFrNz1pPYt+YaeAm00ZHEHoNxxldAp/pluegU0km7t8iLdoSiyXRVOo6QA==","previousBlockHash":"lQJlhVDfQJR6SyMj1is2ScYoi6l0G068OXpS1zEqls/XExiIDhwNjkHccxFz9lSGQ3Z61lU8/X0sI1BVwamR2w==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687561,"nanos":202449139}}}}
+10/11/2016 01:00:32	ENTER	GET blockchain/blocks/494	INPUT: {}
+10/11/2016 01:00:32	EXIT	GET blockchain/blocks/494	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDRDEglDRzExMDgxNjMqA2ppbQ==","uuid":"db2ee03e-f8cd-493c-b403-981688cad0e6","timestamp":{"seconds":1478687548,"nanos":501286842}}],"stateHash":"WMlOX2RwNQQFjWbXGqo/fLbzW1+kxZmpoeZ1F5h7fBtzeR752/npUvNA8ZxxxBwce0XJTVsHwhj7U9ceNQlEVA==","previousBlockHash":"LDIdtDIdlHmz3ytWXhnWgDG3iYI5oN1W3ezffNIypFUo8fIP5nbQNItLERjG67Wdxid21lG+vbNyLpj+0gVKtg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687549,"nanos":516053244}}}}
+10/11/2016 01:00:32	ENTER	GET blockchain/blocks/493	INPUT: {}
+10/11/2016 01:00:32	EXIT	GET blockchain/blocks/493	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjAIARIKEghUVGNhcmdvMRobCg5jcmVhdGVfcGFja2FnZRIJQ0cxMTA4MTY0KgNqaW0=","uuid":"ca137b3a-92ee-4bec-9bd7-0733c6d2c176","timestamp":{"seconds":1478687502,"nanos":158134575}}],"stateHash":"jTfYvP8NuidLZKatnoK8lecVmNVN3tI2nBqR//0sXGWYcFpF5fseocHBuyYmufTWm1sgTkepJKg8QBFbDA7r4g==","previousBlockHash":"s2WdU8oRtpXpV06g2eKVm8Aysqt1kOMR9nyhEWHYaRxrm9qTxV+XFJGNbdkTAw93otgfI6hG+JCryQOf1guuCg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687503,"nanos":278403771}}}}
+10/11/2016 01:00:32	ENTER	GET blockchain/blocks/492	INPUT: {}
+10/11/2016 01:00:32	EXIT	GET blockchain/blocks/492	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjAIARIKEghUVGNhcmdvMRobCg5jcmVhdGVfcGFja2FnZRIJQ0cxMTA4MTYzKgNqaW0=","uuid":"9171c63a-e855-4da6-9ed7-323d585a461f","timestamp":{"seconds":1478687484,"nanos":703801135}}],"stateHash":"1SRrVY8O0lPJVdsp2onVYhj3sm4BuOSikFJPKPnYG1uEBrBfEM9ZhRRGzwJOr/z/sR8v0W99mMfRZzmBgqCiVg==","previousBlockHash":"wV/Y836DvotM0IDzOEnFK7bFCI75NrnH6NyyRQzmaS+qyFSrt35H8Q7uY4tkR2OparOklYwm8nKbqEUv9TagBg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687485,"nanos":731210205}}}}
+10/11/2016 01:00:32	ENTER	GET blockchain/blocks/491	INPUT: {}
+10/11/2016 01:00:32	EXIT	GET blockchain/blocks/491	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDNDEglDRzExMDgxNjIqA2ppbQ==","uuid":"b222cc45-1108-41e4-88b8-2b623aaaea3e","timestamp":{"seconds":1478687443,"nanos":1133343}}],"stateHash":"TxqyEkA0t9yC2khvrPDG2XbaGtaxxO/IIW5Ab3sIJ5gfMbJhZrlssbJy5aFlhLDFBNHVQNG/efjMTsDeyioh7w==","previousBlockHash":"hMrcfTrHcW9hsE/ga++xKSbyGwciqJGNVSSdA1R+j/ZgA3Eyr6OIM3jQjHHJl6qVUU8/AdsellTvZ3Ad72i41w==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687444,"nanos":46224269}}}}
+10/11/2016 01:00:32	ENTER	GET blockchain/blocks/490	INPUT: {}
+10/11/2016 01:00:32	EXIT	GET blockchain/blocks/490	OUTPUT: {"block":{"stateHash":"yj16mNkP7yC9Zm+7fQJpQakWv6o++Gz7sZhtdibwAwxjqO+Yqbso6ID/wRYaaxuhLKuzr95QevSLwWQekLCq+A==","previousBlockHash":"o3asdtTAoJxh3eKGb7Lpz0HjwuxhoBtyunnIxKZEbWEumezQZmC5EdqrP36xcTwc09GuX8qO0IM8ebwWP/24QQ==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687202,"nanos":701029586}}}}
+10/11/2016 01:08:53	ENTER	Startup	INPUT: {}
+	10/11/2016 01:08:53	INFO	Startup	Locating initial participants
+	10/11/2016 01:08:53	INFO	Startup	Failed to register using HFC, user may have already been enrolled. Error
+	10/11/2016 01:08:58	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:09:04	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:09:09	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:09:15	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:09:20	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:09:26	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:09:32	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:09:37	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:09:43	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:09:49	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:09:54	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:09:59	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:10:05	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:10:11	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:10:16	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:10:22	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:10:22	INFO	Startup	Getting initial height of the blockchain
+	10/11/2016 01:10:27	INFO	Startup	Updating config file
+	10/11/2016 01:10:27	INFO	Startup	Deploying vehicle chaincode
+	10/11/2016 01:10:27	ERROR	Startup	OUTPUT: {"message":"Error deploying vehicle chaincode","body":{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":"Chaincode name may not be blank in development mode."},"id":12},"error":true}
+10/11/2016 01:13:34	ENTER	GET blockchain/blocks	INPUT: {}
+10/11/2016 01:13:34	EXIT	GET blockchain/blocks	OUTPUT: {"height":496,"currentBlockHash":"FtnVyE57jJI5SIkgtG0HwUkMCvgZZCtjJj5ZNsqdj98aVOCuBaGSB/+JW81JDQUkj3rH69QdigPl4VViX+upAA=="}
+10/11/2016 01:13:34	ENTER	GET blockchain/blocks/495	INPUT: {}
+10/11/2016 01:13:34	EXIT	GET blockchain/blocks/495	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDVDEglDRzExMDgxNjQqA2ppbQ==","uuid":"b73624bd-63c6-429f-8e81-da28c3a27301","timestamp":{"seconds":1478687560,"nanos":178600019}}],"stateHash":"Sqrn8E/A/NamR4hXBjh4NXrB5tHzbFrNz1pPYt+YaeAm00ZHEHoNxxldAp/pluegU0km7t8iLdoSiyXRVOo6QA==","previousBlockHash":"lQJlhVDfQJR6SyMj1is2ScYoi6l0G068OXpS1zEqls/XExiIDhwNjkHccxFz9lSGQ3Z61lU8/X0sI1BVwamR2w==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687561,"nanos":202449139}}}}
+10/11/2016 01:13:34	ENTER	GET blockchain/blocks/494	INPUT: {}
+10/11/2016 01:13:34	EXIT	GET blockchain/blocks/494	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDRDEglDRzExMDgxNjMqA2ppbQ==","uuid":"db2ee03e-f8cd-493c-b403-981688cad0e6","timestamp":{"seconds":1478687548,"nanos":501286842}}],"stateHash":"WMlOX2RwNQQFjWbXGqo/fLbzW1+kxZmpoeZ1F5h7fBtzeR752/npUvNA8ZxxxBwce0XJTVsHwhj7U9ceNQlEVA==","previousBlockHash":"LDIdtDIdlHmz3ytWXhnWgDG3iYI5oN1W3ezffNIypFUo8fIP5nbQNItLERjG67Wdxid21lG+vbNyLpj+0gVKtg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687549,"nanos":516053244}}}}
+10/11/2016 01:13:34	ENTER	GET blockchain/blocks/493	INPUT: {}
+10/11/2016 01:13:34	EXIT	GET blockchain/blocks/493	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjAIARIKEghUVGNhcmdvMRobCg5jcmVhdGVfcGFja2FnZRIJQ0cxMTA4MTY0KgNqaW0=","uuid":"ca137b3a-92ee-4bec-9bd7-0733c6d2c176","timestamp":{"seconds":1478687502,"nanos":158134575}}],"stateHash":"jTfYvP8NuidLZKatnoK8lecVmNVN3tI2nBqR//0sXGWYcFpF5fseocHBuyYmufTWm1sgTkepJKg8QBFbDA7r4g==","previousBlockHash":"s2WdU8oRtpXpV06g2eKVm8Aysqt1kOMR9nyhEWHYaRxrm9qTxV+XFJGNbdkTAw93otgfI6hG+JCryQOf1guuCg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687503,"nanos":278403771}}}}
+10/11/2016 01:13:34	ENTER	GET blockchain/blocks/492	INPUT: {}
+10/11/2016 01:13:34	EXIT	GET blockchain/blocks/492	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjAIARIKEghUVGNhcmdvMRobCg5jcmVhdGVfcGFja2FnZRIJQ0cxMTA4MTYzKgNqaW0=","uuid":"9171c63a-e855-4da6-9ed7-323d585a461f","timestamp":{"seconds":1478687484,"nanos":703801135}}],"stateHash":"1SRrVY8O0lPJVdsp2onVYhj3sm4BuOSikFJPKPnYG1uEBrBfEM9ZhRRGzwJOr/z/sR8v0W99mMfRZzmBgqCiVg==","previousBlockHash":"wV/Y836DvotM0IDzOEnFK7bFCI75NrnH6NyyRQzmaS+qyFSrt35H8Q7uY4tkR2OparOklYwm8nKbqEUv9TagBg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687485,"nanos":731210205}}}}
+10/11/2016 01:13:34	ENTER	GET blockchain/blocks/491	INPUT: {}
+10/11/2016 01:13:34	EXIT	GET blockchain/blocks/491	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDNDEglDRzExMDgxNjIqA2ppbQ==","uuid":"b222cc45-1108-41e4-88b8-2b623aaaea3e","timestamp":{"seconds":1478687443,"nanos":1133343}}],"stateHash":"TxqyEkA0t9yC2khvrPDG2XbaGtaxxO/IIW5Ab3sIJ5gfMbJhZrlssbJy5aFlhLDFBNHVQNG/efjMTsDeyioh7w==","previousBlockHash":"hMrcfTrHcW9hsE/ga++xKSbyGwciqJGNVSSdA1R+j/ZgA3Eyr6OIM3jQjHHJl6qVUU8/AdsellTvZ3Ad72i41w==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687444,"nanos":46224269}}}}
+10/11/2016 01:13:34	ENTER	GET blockchain/blocks/490	INPUT: {}
+10/11/2016 01:13:35	EXIT	GET blockchain/blocks/490	OUTPUT: {"block":{"stateHash":"yj16mNkP7yC9Zm+7fQJpQakWv6o++Gz7sZhtdibwAwxjqO+Yqbso6ID/wRYaaxuhLKuzr95QevSLwWQekLCq+A==","previousBlockHash":"o3asdtTAoJxh3eKGb7Lpz0HjwuxhoBtyunnIxKZEbWEumezQZmC5EdqrP36xcTwc09GuX8qO0IM8ebwWP/24QQ==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687202,"nanos":701029586}}}}
+10/11/2016 01:18:58	ENTER	Startup	INPUT: {}
+	10/11/2016 01:18:58	INFO	Startup	Locating initial participants
+	10/11/2016 01:18:58	INFO	Startup	Failed to register using HFC, user may have already been enrolled. Error
+	10/11/2016 01:19:04	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:19:09	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:19:15	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:19:20	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:19:26	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:19:31	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:19:37	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:19:43	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:19:49	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:19:55	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:20:00	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:20:06	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:20:12	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:20:17	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:20:23	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:20:29	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:20:29	INFO	Startup	Getting initial height of the blockchain
+	10/11/2016 01:20:34	INFO	Startup	Updating config file
+	10/11/2016 01:20:34	INFO	Startup	Deploying vehicle chaincode
+	10/11/2016 01:20:34	ERROR	Startup	OUTPUT: {"message":"Error deploying vehicle chaincode","body":{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":"Chaincode name may not be blank in development mode."},"id":12},"error":true}
+10/11/2016 01:40:02	ENTER	Startup	INPUT: {}
+	10/11/2016 01:40:02	INFO	Startup	Locating initial participants
+	10/11/2016 01:40:03	INFO	Startup	Failed to register using HFC, user may have already been enrolled. Error
+	10/11/2016 01:40:09	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:40:14	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:40:20	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:40:26	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:40:31	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:40:37	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:40:43	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:40:49	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:40:54	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:41:00	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:41:05	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:41:11	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:41:16	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:41:22	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:41:28	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:41:34	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 01:41:34	INFO	Startup	Getting initial height of the blockchain
+	10/11/2016 01:41:39	INFO	Startup	Updating config file
+	10/11/2016 01:41:39	INFO	Startup	Deploying vehicle chaincode
+	10/11/2016 01:41:39	ERROR	Startup	OUTPUT: {"message":"Error deploying vehicle chaincode","body":{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":"Chaincode name may not be blank in development mode."},"id":12},"error":true}
+10/11/2016 01:46:11	ENTER	GET blockchain/blocks	INPUT: {}
+10/11/2016 01:47:55	EXIT	GET blockchain/blocks	OUTPUT: {"height":496,"currentBlockHash":"FtnVyE57jJI5SIkgtG0HwUkMCvgZZCtjJj5ZNsqdj98aVOCuBaGSB/+JW81JDQUkj3rH69QdigPl4VViX+upAA=="}
+10/11/2016 01:47:58	ENTER	GET blockchain/blocks	INPUT: {}
+10/11/2016 01:48:09	EXIT	GET blockchain/blocks	OUTPUT: {"height":496,"currentBlockHash":"FtnVyE57jJI5SIkgtG0HwUkMCvgZZCtjJj5ZNsqdj98aVOCuBaGSB/+JW81JDQUkj3rH69QdigPl4VViX+upAA=="}
+10/11/2016 01:48:09	ENTER	GET blockchain/blocks/495	INPUT: {}
+10/11/2016 01:48:09	EXIT	GET blockchain/blocks/495	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDVDEglDRzExMDgxNjQqA2ppbQ==","uuid":"b73624bd-63c6-429f-8e81-da28c3a27301","timestamp":{"seconds":1478687560,"nanos":178600019}}],"stateHash":"Sqrn8E/A/NamR4hXBjh4NXrB5tHzbFrNz1pPYt+YaeAm00ZHEHoNxxldAp/pluegU0km7t8iLdoSiyXRVOo6QA==","previousBlockHash":"lQJlhVDfQJR6SyMj1is2ScYoi6l0G068OXpS1zEqls/XExiIDhwNjkHccxFz9lSGQ3Z61lU8/X0sI1BVwamR2w==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687561,"nanos":202449139}}}}
+10/11/2016 01:48:09	ENTER	GET blockchain/blocks/494	INPUT: {}
+10/11/2016 01:48:09	EXIT	GET blockchain/blocks/494	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDRDEglDRzExMDgxNjMqA2ppbQ==","uuid":"db2ee03e-f8cd-493c-b403-981688cad0e6","timestamp":{"seconds":1478687548,"nanos":501286842}}],"stateHash":"WMlOX2RwNQQFjWbXGqo/fLbzW1+kxZmpoeZ1F5h7fBtzeR752/npUvNA8ZxxxBwce0XJTVsHwhj7U9ceNQlEVA==","previousBlockHash":"LDIdtDIdlHmz3ytWXhnWgDG3iYI5oN1W3ezffNIypFUo8fIP5nbQNItLERjG67Wdxid21lG+vbNyLpj+0gVKtg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687549,"nanos":516053244}}}}
+10/11/2016 01:48:09	ENTER	GET blockchain/blocks/493	INPUT: {}
+10/11/2016 01:48:09	EXIT	GET blockchain/blocks/493	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjAIARIKEghUVGNhcmdvMRobCg5jcmVhdGVfcGFja2FnZRIJQ0cxMTA4MTY0KgNqaW0=","uuid":"ca137b3a-92ee-4bec-9bd7-0733c6d2c176","timestamp":{"seconds":1478687502,"nanos":158134575}}],"stateHash":"jTfYvP8NuidLZKatnoK8lecVmNVN3tI2nBqR//0sXGWYcFpF5fseocHBuyYmufTWm1sgTkepJKg8QBFbDA7r4g==","previousBlockHash":"s2WdU8oRtpXpV06g2eKVm8Aysqt1kOMR9nyhEWHYaRxrm9qTxV+XFJGNbdkTAw93otgfI6hG+JCryQOf1guuCg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687503,"nanos":278403771}}}}
+10/11/2016 01:48:09	ENTER	GET blockchain/blocks/492	INPUT: {}
+10/11/2016 01:48:09	EXIT	GET blockchain/blocks/492	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjAIARIKEghUVGNhcmdvMRobCg5jcmVhdGVfcGFja2FnZRIJQ0cxMTA4MTYzKgNqaW0=","uuid":"9171c63a-e855-4da6-9ed7-323d585a461f","timestamp":{"seconds":1478687484,"nanos":703801135}}],"stateHash":"1SRrVY8O0lPJVdsp2onVYhj3sm4BuOSikFJPKPnYG1uEBrBfEM9ZhRRGzwJOr/z/sR8v0W99mMfRZzmBgqCiVg==","previousBlockHash":"wV/Y836DvotM0IDzOEnFK7bFCI75NrnH6NyyRQzmaS+qyFSrt35H8Q7uY4tkR2OparOklYwm8nKbqEUv9TagBg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687485,"nanos":731210205}}}}
+10/11/2016 01:48:09	ENTER	GET blockchain/blocks/491	INPUT: {}
+10/11/2016 01:48:09	EXIT	GET blockchain/blocks/491	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDNDEglDRzExMDgxNjIqA2ppbQ==","uuid":"b222cc45-1108-41e4-88b8-2b623aaaea3e","timestamp":{"seconds":1478687443,"nanos":1133343}}],"stateHash":"TxqyEkA0t9yC2khvrPDG2XbaGtaxxO/IIW5Ab3sIJ5gfMbJhZrlssbJy5aFlhLDFBNHVQNG/efjMTsDeyioh7w==","previousBlockHash":"hMrcfTrHcW9hsE/ga++xKSbyGwciqJGNVSSdA1R+j/ZgA3Eyr6OIM3jQjHHJl6qVUU8/AdsellTvZ3Ad72i41w==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687444,"nanos":46224269}}}}
+10/11/2016 01:48:09	ENTER	GET blockchain/blocks/490	INPUT: {}
+10/11/2016 01:48:09	EXIT	GET blockchain/blocks/490	OUTPUT: {"block":{"stateHash":"yj16mNkP7yC9Zm+7fQJpQakWv6o++Gz7sZhtdibwAwxjqO+Yqbso6ID/wRYaaxuhLKuzr95QevSLwWQekLCq+A==","previousBlockHash":"o3asdtTAoJxh3eKGb7Lpz0HjwuxhoBtyunnIxKZEbWEumezQZmC5EdqrP36xcTwc09GuX8qO0IM8ebwWP/24QQ==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687202,"nanos":701029586}}}}
+10/11/2016 14:52:25	ENTER	Startup	INPUT: {}
+	10/11/2016 14:52:25	INFO	Startup	Locating initial participants
+	10/11/2016 14:52:25	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	10/11/2016 14:52:30	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:52:36	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:52:42	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:52:47	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:52:52	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:52:58	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:53:03	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:53:09	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:53:14	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:53:20	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:53:26	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:53:32	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:53:37	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:53:43	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:53:49	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:53:54	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:53:54	INFO	Startup	Getting initial height of the blockchain
+	10/11/2016 14:53:59	INFO	Startup	Updating config file
+	10/11/2016 14:53:59	INFO	Startup	Deploying vehicle chaincode
+	10/11/2016 14:53:59	ERROR	Startup	OUTPUT: {"message":"Error deploying vehicle chaincode","body":{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":"Chaincode name may not be blank in development mode."},"id":12},"error":true}
+10/11/2016 14:57:28	ENTER	Startup	INPUT: {}
+	10/11/2016 14:57:28	INFO	Startup	Locating initial participants
+	10/11/2016 14:57:28	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	10/11/2016 14:57:33	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:57:39	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:57:44	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:57:50	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:57:56	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:01	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:07	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:12	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:18	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:24	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:30	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:36	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:42	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:47	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:53	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:59	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 14:58:59	INFO	Startup	Getting initial height of the blockchain
+	10/11/2016 14:59:04	INFO	Startup	Updating config file
+	10/11/2016 14:59:04	INFO	Startup	Deploying vehicle chaincode
+	10/11/2016 14:59:04	ERROR	Startup	OUTPUT: {"message":"Error deploying vehicle chaincode","body":{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":"Chaincode name may not be blank in development mode."},"id":12},"error":true}
+10/11/2016 15:01:22	ENTER	Startup	INPUT: {}
+	10/11/2016 15:01:22	INFO	Startup	Locating initial participants
+	10/11/2016 15:01:22	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	10/11/2016 15:01:27	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:01:33	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:01:39	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:01:45	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:01:51	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:01:57	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:02:02	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:02:09	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:02:15	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:02:21	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:02:27	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:02:32	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:02:38	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:02:44	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:02:49	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:02:55	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 15:02:55	INFO	Startup	Getting initial height of the blockchain
+	10/11/2016 15:03:00	INFO	Startup	Updating config file
+	10/11/2016 15:03:00	INFO	Startup	Deploying vehicle chaincode
+	10/11/2016 15:03:00	INFO	Startup	Updating config file
+	10/11/2016 15:03:05	INFO	Startup	Vehicle chaincode deployed on all peers
+10/11/2016 15:04:15	ENTER	GET blockchain/blocks	INPUT: {}
+10/11/2016 15:04:15	EXIT	GET blockchain/blocks	OUTPUT: {"height":497,"currentBlockHash":"2GkTNe7IpgfF5XanFnoyaH8FTLE993SJIH8eJu+g7BBIf6Y0pAhCtLn6yWhOIHLu2wHtpLWP6mgyuTcUaagT6w=="}
+10/11/2016 15:04:17	ENTER	GET blockchain/blocks	INPUT: {}
+10/11/2016 15:04:17	EXIT	GET blockchain/blocks	OUTPUT: {"height":497,"currentBlockHash":"2GkTNe7IpgfF5XanFnoyaH8FTLE993SJIH8eJu+g7BBIf6Y0pAhCtLn6yWhOIHLu2wHtpLWP6mgyuTcUaagT6w=="}
+10/11/2016 15:04:17	ENTER	GET blockchain/blocks/496	INPUT: {}
+10/11/2016 15:04:17	EXIT	GET blockchain/blocks/496	OUTPUT: {"block":{"transactions":[{"type":1,"chaincodeID":"Cm9DOi9BTkFIL0RvY3VtZW50cy9CbG9jay1jaGFpbi9sZWRnZXIvc3JjL2dpdGh1Yi5jb20vaHlwZXJsZWRnZXIvZmFicmljL2V4YW1wbGVzL2NoYWluY29kZS9nby9jaGFpbmNvZGVfVFRjYXJnby8SCFRUY2FyZ285","payload":"Co0BCAESewpvQzovQU5BSC9Eb2N1bWVudHMvQmxvY2stY2hhaW4vbGVkZ2VyL3NyYy9naXRodWIuY29tL2h5cGVybGVkZ2VyL2ZhYnJpYy9leGFtcGxlcy9jaGFpbmNvZGUvZ28vY2hhaW5jb2RlX1RUY2FyZ28vEghUVGNhcmdvORoGCgRpbml0KgREVkxB","uuid":"TTcargo9","timestamp":{"seconds":1478770380,"nanos":323799558}}],"stateHash":"Z3TrDE2gMJeZzZdjAXdZ33MQIc0yM7dXhuscKT1tco4/t0xC26Bjm1DEhrTGIddTNpdZMkDnI7IFwUgs4F1wlg==","previousBlockHash":"FtnVyE57jJI5SIkgtG0HwUkMCvgZZCtjJj5ZNsqdj98aVOCuBaGSB/+JW81JDQUkj3rH69QdigPl4VViX+upAA==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478770381,"nanos":394314665}}}}
+10/11/2016 15:04:17	ENTER	GET blockchain/blocks/495	INPUT: {}
+10/11/2016 15:04:17	EXIT	GET blockchain/blocks/495	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDVDEglDRzExMDgxNjQqA2ppbQ==","uuid":"b73624bd-63c6-429f-8e81-da28c3a27301","timestamp":{"seconds":1478687560,"nanos":178600019}}],"stateHash":"Sqrn8E/A/NamR4hXBjh4NXrB5tHzbFrNz1pPYt+YaeAm00ZHEHoNxxldAp/pluegU0km7t8iLdoSiyXRVOo6QA==","previousBlockHash":"lQJlhVDfQJR6SyMj1is2ScYoi6l0G068OXpS1zEqls/XExiIDhwNjkHccxFz9lSGQ3Z61lU8/X0sI1BVwamR2w==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687561,"nanos":202449139}}}}
+10/11/2016 15:04:17	ENTER	GET blockchain/blocks/494	INPUT: {}
+10/11/2016 15:04:17	EXIT	GET blockchain/blocks/494	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDRDEglDRzExMDgxNjMqA2ppbQ==","uuid":"db2ee03e-f8cd-493c-b403-981688cad0e6","timestamp":{"seconds":1478687548,"nanos":501286842}}],"stateHash":"WMlOX2RwNQQFjWbXGqo/fLbzW1+kxZmpoeZ1F5h7fBtzeR752/npUvNA8ZxxxBwce0XJTVsHwhj7U9ceNQlEVA==","previousBlockHash":"LDIdtDIdlHmz3ytWXhnWgDG3iYI5oN1W3ezffNIypFUo8fIP5nbQNItLERjG67Wdxid21lG+vbNyLpj+0gVKtg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687549,"nanos":516053244}}}}
+10/11/2016 15:04:17	ENTER	GET blockchain/blocks/493	INPUT: {}
+10/11/2016 15:04:17	EXIT	GET blockchain/blocks/493	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjAIARIKEghUVGNhcmdvMRobCg5jcmVhdGVfcGFja2FnZRIJQ0cxMTA4MTY0KgNqaW0=","uuid":"ca137b3a-92ee-4bec-9bd7-0733c6d2c176","timestamp":{"seconds":1478687502,"nanos":158134575}}],"stateHash":"jTfYvP8NuidLZKatnoK8lecVmNVN3tI2nBqR//0sXGWYcFpF5fseocHBuyYmufTWm1sgTkepJKg8QBFbDA7r4g==","previousBlockHash":"s2WdU8oRtpXpV06g2eKVm8Aysqt1kOMR9nyhEWHYaRxrm9qTxV+XFJGNbdkTAw93otgfI6hG+JCryQOf1guuCg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687503,"nanos":278403771}}}}
+10/11/2016 15:04:17	ENTER	GET blockchain/blocks/492	INPUT: {}
+10/11/2016 15:04:17	EXIT	GET blockchain/blocks/492	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjAIARIKEghUVGNhcmdvMRobCg5jcmVhdGVfcGFja2FnZRIJQ0cxMTA4MTYzKgNqaW0=","uuid":"9171c63a-e855-4da6-9ed7-323d585a461f","timestamp":{"seconds":1478687484,"nanos":703801135}}],"stateHash":"1SRrVY8O0lPJVdsp2onVYhj3sm4BuOSikFJPKPnYG1uEBrBfEM9ZhRRGzwJOr/z/sR8v0W99mMfRZzmBgqCiVg==","previousBlockHash":"wV/Y836DvotM0IDzOEnFK7bFCI75NrnH6NyyRQzmaS+qyFSrt35H8Q7uY4tkR2OparOklYwm8nKbqEUv9TagBg==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687485,"nanos":731210205}}}}
+10/11/2016 15:04:17	ENTER	GET blockchain/blocks/491	INPUT: {}
+10/11/2016 15:04:17	EXIT	GET blockchain/blocks/491	OUTPUT: {"block":{"transactions":[{"type":2,"chaincodeID":"EghUVGNhcmdvMQ==","payload":"CjIIARIKEghUVGNhcmdvMRodCgt1cGRhdGVfdHlwZRIDRDNDEglDRzExMDgxNjIqA2ppbQ==","uuid":"b222cc45-1108-41e4-88b8-2b623aaaea3e","timestamp":{"seconds":1478687443,"nanos":1133343}}],"stateHash":"TxqyEkA0t9yC2khvrPDG2XbaGtaxxO/IIW5Ab3sIJ5gfMbJhZrlssbJy5aFlhLDFBNHVQNG/efjMTsDeyioh7w==","previousBlockHash":"hMrcfTrHcW9hsE/ga++xKSbyGwciqJGNVSSdA1R+j/ZgA3Eyr6OIM3jQjHHJl6qVUU8/AdsellTvZ3Ad72i41w==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687444,"nanos":46224269}}}}
+10/11/2016 15:04:17	ENTER	GET blockchain/blocks/490	INPUT: {}
+10/11/2016 15:04:17	EXIT	GET blockchain/blocks/490	OUTPUT: {"block":{"stateHash":"yj16mNkP7yC9Zm+7fQJpQakWv6o++Gz7sZhtdibwAwxjqO+Yqbso6ID/wRYaaxuhLKuzr95QevSLwWQekLCq+A==","previousBlockHash":"o3asdtTAoJxh3eKGb7Lpz0HjwuxhoBtyunnIxKZEbWEumezQZmC5EdqrP36xcTwc09GuX8qO0IM8ebwWP/24QQ==","nonHashData":{"localLedgerCommitTimestamp":{"seconds":1478687202,"nanos":701029586}}}}
+10/11/2016 15:04:24	ENTER	POST admin/identity	INPUT: {"participantType":"regulators","account":"DVLA"}
+	10/11/2016 15:04:24	INFO	POST admin/identity	Calling /registrar endpoint
+	10/11/2016 15:04:26	ERROR	POST admin/identity	OUTPUT: {"message":"Unable to log user in","error":true}
+10/11/2016 17:48:10	ENTER	Startup	INPUT: {}
+	10/11/2016 17:48:10	INFO	Startup	Locating initial participants
+	10/11/2016 17:48:10	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	10/11/2016 17:48:13	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:16	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:19	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:22	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:31	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:34	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:37	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:40	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:43	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:46	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:49	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:52	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:55	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:48:58	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:49:01	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:49:04	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	10/11/2016 17:49:04	INFO	Startup	Getting initial height of the blockchain
+	10/11/2016 17:49:09	INFO	Startup	Error, trying to get the blockchain height again
+	10/11/2016 17:49:14	INFO	Startup	Error, trying to get the blockchain height again
+	10/11/2016 17:49:19	INFO	Startup	Error, trying to get the blockchain height again
+	10/11/2016 17:49:24	INFO	Startup	Error, trying to get the blockchain height again
+	10/11/2016 17:49:29	INFO	Startup	Error, trying to get the blockchain height again
+	10/11/2016 17:49:34	INFO	Startup	Error, trying to get the blockchain height again
+	10/11/2016 17:49:39	ERROR	Startup	OUTPUT: {"message":"Couldn't get blockchain height","error":false}
+	10/11/2016 17:49:39	INFO	Startup	Error, trying to get the blockchain height again
+17/11/2016 12:53:11	ENTER	Startup	INPUT: {}
+	17/11/2016 12:53:11	INFO	Startup	Locating initial participants
+	17/11/2016 12:53:12	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	17/11/2016 12:53:16	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:53:20	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:53:24	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:53:28	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:53:32	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:53:36	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:53:40	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:53:44	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:53:48	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:53:52	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:53:56	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:54:00	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:54:04	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:54:08	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:54:12	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:54:16	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:54:16	INFO	Startup	Getting initial height of the blockchain
+	17/11/2016 12:54:22	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 12:54:27	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 12:54:32	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 12:54:37	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 12:54:42	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 12:54:47	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 12:54:52	ERROR	Startup	OUTPUT: {"message":"Couldn't get blockchain height","error":false}
+	17/11/2016 12:54:52	INFO	Startup	Error, trying to get the blockchain height again
+17/11/2016 12:58:41	ENTER	Startup	INPUT: {}
+	17/11/2016 12:58:41	INFO	Startup	Locating initial participants
+	17/11/2016 12:58:43	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	17/11/2016 12:58:46	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:58:50	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:58:54	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 12:58:58	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:03	INFO	Startup	Locating initial participants
+17/11/2016 14:19:03	ENTER	Startup	INPUT: {}
+	17/11/2016 14:19:04	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	17/11/2016 14:19:08	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:12	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:16	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:20	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:24	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:28	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:32	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:36	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:40	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:44	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:48	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:52	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:19:56	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:20:00	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:20:04	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:20:08	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 14:20:08	INFO	Startup	Getting initial height of the blockchain
+	17/11/2016 14:20:14	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 14:20:19	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 14:20:24	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 14:20:29	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 14:20:34	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 14:20:39	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 14:20:44	ERROR	Startup	OUTPUT: {"message":"Couldn't get blockchain height","error":false}
+	17/11/2016 14:20:44	INFO	Startup	Error, trying to get the blockchain height again
+17/11/2016 20:06:47	ENTER	Startup	INPUT: {}
+	17/11/2016 20:06:47	INFO	Startup	Locating initial participants
+	17/11/2016 20:06:48	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	17/11/2016 20:06:52	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:06:56	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:00	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:04	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:08	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:12	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:16	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:20	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:24	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:28	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:32	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:36	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:40	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:44	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:48	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:52	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 20:07:52	INFO	Startup	Getting initial height of the blockchain
+	17/11/2016 20:07:58	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 20:08:03	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 20:08:08	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 20:08:13	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 20:08:18	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 20:08:23	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 20:08:28	ERROR	Startup	OUTPUT: {"message":"Couldn't get blockchain height","error":false}
+	17/11/2016 20:08:28	INFO	Startup	Error, trying to get the blockchain height again
+	17/11/2016 23:42:27	INFO	Startup	Locating initial participants
+17/11/2016 23:42:27	ENTER	Startup	INPUT: {}
+	17/11/2016 23:42:28	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	17/11/2016 23:42:32	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 23:42:36	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 23:42:40	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	17/11/2016 23:42:44	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:18	INFO	Startup	Locating initial participants
+22/11/2016 23:48:18	ENTER	Startup	INPUT: {}
+	22/11/2016 23:48:18	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	22/11/2016 23:48:21	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:24	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:27	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:30	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:33	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:36	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:39	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:43	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:46	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:49	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:52	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:55	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:48:58	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:49:01	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:49:04	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:49:07	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	22/11/2016 23:49:07	INFO	Startup	Getting initial height of the blockchain
+	22/11/2016 23:49:12	INFO	Startup	Updating config file
+	22/11/2016 23:49:12	INFO	Startup	Deploying vehicle chaincode
+	22/11/2016 23:49:12	ERROR	Startup	OUTPUT: {"message":"Error deploying vehicle chaincode","body":{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":"Chaincode name may not be blank in development mode."},"id":12},"error":true}
+23/11/2016 00:04:42	ENTER	Startup	INPUT: {}
+	23/11/2016 00:04:42	INFO	Startup	Locating initial participants
+	23/11/2016 00:04:42	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	23/11/2016 00:04:44	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:04:47	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:04:50	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:04:53	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:04:56	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:00	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:03	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:06	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:09	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:12	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:15	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:18	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:21	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:24	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:27	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:30	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:05:30	INFO	Startup	Getting initial height of the blockchain
+	23/11/2016 00:05:35	INFO	Startup	Updating config file
+	23/11/2016 00:05:35	INFO	Startup	Deploying vehicle chaincode
+	23/11/2016 00:05:35	ERROR	Startup	OUTPUT: {"message":"Error deploying vehicle chaincode","body":{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":"Chaincode name may not be blank in development mode."},"id":12},"error":true}
+23/11/2016 00:27:15	ENTER	Startup	INPUT: {}
+	23/11/2016 00:27:15	INFO	Startup	Locating initial participants
+	23/11/2016 00:27:17	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	23/11/2016 00:27:19	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:22	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:25	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:28	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:31	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:35	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:38	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:41	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:44	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:47	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:50	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:53	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:56	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:27:59	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:28:02	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:28:05	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:28:05	INFO	Startup	Getting initial height of the blockchain
+	23/11/2016 00:28:10	INFO	Startup	Updating config file
+	23/11/2016 00:28:10	INFO	Startup	Deploying vehicle chaincode
+	23/11/2016 00:28:10	ERROR	Startup	OUTPUT: {"message":"Error deploying vehicle chaincode","body":{"jsonrpc":"2.0","error":{"code":-32602,"message":"Invalid params","data":"Chaincode name may not be blank in development mode."},"id":12},"error":true}
+23/11/2016 00:48:45	ENTER	Startup	INPUT: {}
+	23/11/2016 00:48:45	INFO	Startup	Locating initial participants
+	23/11/2016 00:48:47	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	23/11/2016 00:49:56	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:50:17	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 00:52:13	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 01:06:03	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	23/11/2016 01:55:41	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+29/11/2016 11:48:53	ENTER	Startup	INPUT: {}
+	29/11/2016 11:48:53	INFO	Startup	Locating initial participants
+	29/11/2016 11:48:54	INFO	Startup	Failed to register user: WebAppAdmin,1a9513992fusing HFC, user may have already been enrolled. Error
+	29/11/2016 11:48:57	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:01	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:05	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:09	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:13	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:17	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:21	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:25	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:29	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:33	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:37	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:41	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:46	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:50	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:54	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:58	ERROR	Startup	OUTPUT: "[object Object] Error: chain registrar is not set"
+	29/11/2016 11:49:58	INFO	Startup	Getting initial height of the blockchain
+	29/11/2016 11:50:04	INFO	Startup	Error, trying to get the blockchain height again
+	29/11/2016 11:50:09	INFO	Startup	Error, trying to get the blockchain height again
+	29/11/2016 11:50:14	INFO	Startup	Error, trying to get the blockchain height again
+	29/11/2016 11:50:19	INFO	Startup	Error, trying to get the blockchain height again
+	29/11/2016 11:50:24	INFO	Startup	Error, trying to get the blockchain height again
+	29/11/2016 11:50:29	INFO	Startup	Error, trying to get the blockchain height again
+	29/11/2016 11:50:34	ERROR	Startup	OUTPUT: {"message":"Couldn't get blockchain height","error":false}
+	29/11/2016 11:50:34	INFO	Startup	Error, trying to get the blockchain height again

@@ -80,13 +80,15 @@ var create = function()
 	chain.addPeer(configFile.config.hfc_protocol+"://"+api_ip+":"+configFile.config.api_port_discovery, {pem:pem});
 	chain.enroll(registrar_name, registrar_password, function(err, registrar) {
 		
+		
+		
 		if (!err){
 			// Successfully enrolled registrar and set this user as the chain's registrar which is authorized to register other users.
 			tracing.create('INFO', 'Startup', 'Registrar enroll worked with user ' + registrar_name);
 			chain.setRegistrar(registrar);
 		} 
 		else{
-			tracing.create('INFO', 'Startup', 'Failed to register using HFC, user may have already been enrolled. '+err);
+			tracing.create('INFO', 'Startup', 'Failed to register user: ' + registrar_name + ',' + registrar_password + 'using HFC, user may have already been enrolled. '+err);
 		}
 		
 		//Start the process of registering and enrolling the demo participants with the CA
@@ -267,6 +269,7 @@ function deploy_vehicle() //Deploy vehicle chaincode
 						    "type": 1,
 						    "chaincodeID": {
 						      "path": configFile.config.vehicle
+							
 						    },
 						    "ctorMsg": {
 						      "function": "init",

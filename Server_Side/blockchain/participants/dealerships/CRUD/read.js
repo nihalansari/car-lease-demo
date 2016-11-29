@@ -7,21 +7,21 @@ var reload = require('require-reload')(require),
 var read = function(req, res)
 {
 	participants = reload(__dirname+'/../../participants_info.js');
-	tracing.create('ENTER', 'GET blockchain/participants/dealerships', {});
+	tracing.create('ENTER', 'GET blockchain/participants/warehouse', {});
 	
-	if(!participants.participants_info.hasOwnProperty('dealerships'))
+	if(!participants.participants_info.hasOwnProperty('warehouse'))
 	{
 		res.status(404)
 		var error = {}
-		error.message = 'Unable to retrieve dealerships'
+		error.message = 'Unable to retrieve warehouse'
 		error.error = true;
-		tracing.create('ERROR', 'GET blockchain/participants/dealerships', error);
+		tracing.create('ERROR', 'GET blockchain/participants/warehouse', error);
 		res.send(error)
 	} 
 	else
 	{
-		tracing.create('EXIT', 'GET blockchain/participants/dealerships', {"result":participants.participants_info.dealerships});
-		res.send({"result":participants.participants_info.dealerships})
+		tracing.create('EXIT', 'GET blockchain/participants/warehouse', {"result":participants.participants_info.warehouse});
+		res.send({"result":participants.participants_info.warehouse})
 	}
 }
 exports.read = read;

@@ -12,8 +12,9 @@ Not used for Bluemix demo which instead uses "\Server_Side\configurations\startu
 */
 function deploy(req, res)
 {
+	//console.log("The value picked from config files are: " + configFile.config.vehicle + ',' + config.api_ip);
 	
-	tracing.create('ENTER', 'POST blockchain/chaincode/vehicles', {})
+	tracing.create('ENTER', 'POST blockchain/chaincode/cargopacks', {})
 	configFile = reload(__dirname+'/../../../../configurations/configuration.js');
 	
 	var api_url = configFile.config.api_ip+":"+configFile.config.api_port_internal
@@ -56,7 +57,7 @@ function deploy(req, res)
 		{
 			
 			setTimeout(function() {
-				tracing.create('INFO', 'POST blockchain/chaincode/vehicles', 'Chaincode deployed. Writing to config.')
+				tracing.create('INFO', 'POST blockchain/chaincode/cargopacks', 'Chaincode deployed. Writing to config.')
 				update_config(body.result.message, res)
 			}, 60000);
 		}
@@ -95,12 +96,12 @@ function update_config(name, res) //Updates config.vehicle_name (ID of Chaincode
 				var error = {}
 				error.message = "Unable to write chaincode deploy name to configuration file"
 				error.error = true;
-				tracing.create('ERROR', 'POST blockchain/chaincode/vehicles', error)
+				tracing.create('ERROR', 'POST blockchain/chaincode/cargopacks', error)
 				res.send(error)
 			}
 			else
 			{
-				tracing.create('EXIT', 'POST blockchain/chaincode/vehicles', {"message":name})
+				tracing.create('EXIT', 'POST blockchain/chaincode/cargopacks', {"message":name})
 				res.send({"message":name})
 			}			
 		});

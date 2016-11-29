@@ -15,7 +15,7 @@ config.number_of_timeout_checks 	= 15;
 //--------------------------------------------------------------------------------------------------------------------
 
 //Height of the blockchain at the time of deploying the application, used to verify chaincode deploy has completed
-config.start_height = '0';
+config.start_height = '521';
 
 //--------------------------------------------------------------------------------------------------------------------
 //	Tracing
@@ -38,16 +38,16 @@ config.networkProtocol 	= 'https'			 // The protocol to be used for connecting v
 config.api_ip = 'http://127.0.0.1'; //IP of the peer attempting to be connected to. By default this is the first peer in the peers array.
 
 //When using blockchain on bluemix, api_port_external and api_port_internal will be the same
-config.api_port_external 	= '5000'; //port number used when calling api from outside of the vagrant environment
-config.api_port_internal 	= '5000'; //port number used when calling api from inside vagrant environment - generally used for chaincode calling out to api
-config.api_port_discovery 	= '30303' //port number used for HFC
+config.api_port_external = '5000'; //port number used when calling api from outside of the vagrant environment
+config.api_port_internal = '5000'; //port number used when calling api from inside vagrant environment - generally used for chaincode calling out to api
+config.api_port_discovery = '30303';//port number used for HFC
 
 //IP and port configuration for the Certificate Authority. This is used for enrolling WebAppAdmin and creating all the user via HFC. Default values are for running Hyperledger locally.
-config.ca_ip 	= '127.0.0.1'; 	//IP of the CA attempting to be connected to
-config.ca_port 	= '50051'; 		//Discovery port of the Certificate Authority. Used for HFC
+config.ca_ip = '127.0.0.1'; 	//IP of the CA attempting to be connected to
+config.ca_port = '50051'; 		//Discovery port of the Certificate Authority. Used for HFC
 
 //Settings for the nodeJS application server
-config.app_url 	= 'http://localhost:80'; 	//Url of the NodeJS Server
+config.app_url = 'http://localhost:80'; 	//Url of the NodeJS Server
 config.app_port = 80; 						//Port that the NodeJS server is operating on
 
 //Information about all peers in the network, currently only used for checking that chaincode has been deployed to all peers on startup
@@ -57,8 +57,8 @@ config.peers = ['http://127.0.0.1'];
 //	User information - These credentials are used for HFC to enroll this user and then set them as the registrar to create new users.
 //--------------------------------------------------------------------------------------------------------------------
 
-config.registrar_name 		= "WebAppAdmin";
-config.registrar_password 	= "1a9513992f";
+config.registrar_name = 'WebAppAdmin';
+config.registrar_password = '1a9513992f';
 
 //--------------------------------------------------------------------------------------------------------------------
 //	HFC configuration - Defines what protocol to use for communication, bluemix certificate location and key store location
@@ -73,9 +73,16 @@ config.key_store_location		= "/tmp/keyValStore";
 //	Chaincode
 //--------------------------------------------------------------------------------------------------------------------
 //Chaincode file location
+//config.vehicle = "https://github.com/IBM-Blockchain/car-lease-demo/Chaincode/vehicle_code/"
 config.vehicle = "https://github.com/nihalansari/car-lease-demo/Chaincode/vehicle_code/"
+//config.vehicle = "C:/ANAH/Documents/Block-chain/ledger/src/github.com/hyperledger/fabric/examples/chaincode/go/chaincode_TTcargo/";
+//config.vehicle="github.com/fabric/vehicle_code";
+
 
 //Chaincode deployed names
-config.vehicle_name = '2e436d1363bb9f7c00342fa3fe30eff2c303f06ed4a396a06416a5e1e488ead7edd99f337e31fc6692d785bc0d9a30e942f111caccae15e7c34de6c716f0d92a';
+//config.vehicle_name = '2e436d1363bb9f7c00342fa3fe30eff2c303f06ed4a396a06416a5e1e488ead7edd99f337e31fc6692d785bc0d9a30e942f111caccae15e7c34de6c716f0d92a';
+//config.vehicle_name = 'TTcargo9';
+config.vehicle_name = '160ddf7fe8da52b4b5d2bef57441498b7a78f952d08828c503141e010c89a72b789708753c8ee68dfbe6320490bdcc1c257daac452564071079e77618e2d9f69';
+
 
 exports.config = config; // Exports for use in other files that require this one
