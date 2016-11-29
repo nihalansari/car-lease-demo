@@ -122,7 +122,7 @@ type V5C_Holder struct {
 //==============================================================================================================================
 //	Init Function - Called when the user deploys the chaincode																	
 //==============================================================================================================================
-func (t *SimpleChaincode) Init(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
+func (t *SimpleChaincode) Init(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	
 	//Args
 	//				0
@@ -145,7 +145,7 @@ func (t *SimpleChaincode) Init(stub *shim.ChaincodeStub, function string, args [
 //				  Returns the username as a string.
 //==============================================================================================================================
 
-func (t *SimpleChaincode) get_username(stub *shim.ChaincodeStub) (string, error) {
+func (t *SimpleChaincode) get_username(stub shim.ChaincodeStubInterface) (string, error) {
 
 															
 	return "jim", nil
@@ -158,7 +158,7 @@ func (t *SimpleChaincode) get_username(stub *shim.ChaincodeStub) (string, error)
 //					 name passed.
 //==============================================================================================================================
 
-func (t *SimpleChaincode) get_caller_data(stub *shim.ChaincodeStub) (string, error){	
+func (t *SimpleChaincode) get_caller_data(stub shim.ChaincodeStubInterface) (string, error){	
 
 	user, err := t.get_username(stub)
 																		if err != nil { return "", err }
@@ -172,7 +172,7 @@ func (t *SimpleChaincode) get_caller_data(stub *shim.ChaincodeStub) (string, err
 //					JSON into the Vehicle struct for use in the contract. Returns the Vehcile struct.
 //					Returns empty v if it errors.
 //==============================================================================================================================
-func (t *SimpleChaincode) retrieve_v5c(stub *shim.ChaincodeStub, v5cID string) (CargoPack, error) {
+func (t *SimpleChaincode) retrieve_v5c(stub shim.ChaincodeStubInterface, v5cID string) (CargoPack, error) {
 	
 	var v CargoPack
 
@@ -191,7 +191,7 @@ func (t *SimpleChaincode) retrieve_v5c(stub *shim.ChaincodeStub, v5cID string) (
 // save_changes - Writes to the ledger the Vehicle struct passed in a JSON format. Uses the shim file's 
 //				  method 'PutState'.
 //==============================================================================================================================
-func (t *SimpleChaincode) save_changes(stub *shim.ChaincodeStub, v CargoPack) (bool, error) {
+func (t *SimpleChaincode) save_changes(stub shim.ChaincodeStubInterface, v CargoPack) (bool, error) {
 	 
 	bytes, err := json.Marshal(v)
 	
@@ -210,7 +210,7 @@ func (t *SimpleChaincode) save_changes(stub *shim.ChaincodeStub, v CargoPack) (b
 //	Invoke - Called on chaincode invoke. Takes a function name passed and calls that function. Converts some
 //		  initial arguments passed to other things for use in the called function e.g. name -> ecert
 //==============================================================================================================================
-func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
+func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	
 	var i1 int
 	caller, err := t.get_caller_data(stub)
@@ -269,7 +269,7 @@ func (t *SimpleChaincode) Invoke(stub *shim.ChaincodeStub, function string, args
 //	Query - Called on chaincode query. Takes a function name passed and calls that function. Passes the
 //  		initial arguments passed are passed on to the called function.
 //=================================================================================================================================	
-func (t *SimpleChaincode) Query(stub *shim.ChaincodeStub, function string, args []string) ([]byte, error) {
+func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 													
 	fmt.Printf("Nihal Copy of chaincode running!")
 	caller, err := t.get_caller_data(stub)
@@ -298,7 +298,7 @@ func (t *SimpleChaincode) Query(stub *shim.ChaincodeStub, function string, args 
 //=================================================================================================================================									
 //	 Create Vehicle - Creates the initial JSON for the vehcile and then saves it to the ledger.									
 //=================================================================================================================================
-func (t *SimpleChaincode) create_package(stub *shim.ChaincodeStub, caller string, v5cID string) ([]byte, error) {								
+func (t *SimpleChaincode) create_package(stub shim.ChaincodeStubInterface, caller string, v5cID string) ([]byte, error) {								
 fmt.Printf("Nihal Copy of chaincode running!")
 	var v CargoPack																																										
 	
@@ -376,7 +376,7 @@ fmt.Printf("Nihal Copy of chaincode running!")
 //=================================================================================================================================
 //	 authority_to_manufacturer
 //=================================================================================================================================
-func (t *SimpleChaincode) authority_to_manufacturer(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
+func (t *SimpleChaincode) authority_to_manufacturer(stub shim.ChaincodeStubInterface, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if     	v.Status				== STATE_TEMPLATE	&&
 			v.Owner					== caller			&&
@@ -403,7 +403,7 @@ func (t *SimpleChaincode) authority_to_manufacturer(stub *shim.ChaincodeStub, v 
 //=================================================================================================================================
 //	 manufacturer_to_private
 //=================================================================================================================================
-func (t *SimpleChaincode) manufacturer_to_private(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
+func (t *SimpleChaincode) manufacturer_to_private(stub shim.ChaincodeStubInterface, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if 		v.Type 	 		== "UNDEFINED" || 					
 			v.Particulars   == "UNDEFINED" || 
@@ -436,7 +436,7 @@ func (t *SimpleChaincode) manufacturer_to_private(stub *shim.ChaincodeStub, v Ca
 //=================================================================================================================================
 //	 private_to_private
 //=================================================================================================================================
-func (t *SimpleChaincode) private_to_private(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
+func (t *SimpleChaincode) private_to_private(stub shim.ChaincodeStubInterface, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if 		v.Status				== STATE_PRIVATE_OWNERSHIP	&&
 			v.Owner					== caller					&&
@@ -461,7 +461,7 @@ func (t *SimpleChaincode) private_to_private(stub *shim.ChaincodeStub, v CargoPa
 //=================================================================================================================================
 //	 private_to_lease_company
 //=================================================================================================================================
-func (t *SimpleChaincode) private_to_lease_company(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
+func (t *SimpleChaincode) private_to_lease_company(stub shim.ChaincodeStubInterface, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if 		v.Status				== STATE_PRIVATE_OWNERSHIP	&& 
 			v.Owner					== caller					&& 
@@ -483,7 +483,7 @@ func (t *SimpleChaincode) private_to_lease_company(stub *shim.ChaincodeStub, v C
 //=================================================================================================================================
 //	 lease_company_to_private
 //=================================================================================================================================
-func (t *SimpleChaincode) lease_company_to_private(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
+func (t *SimpleChaincode) lease_company_to_private(stub shim.ChaincodeStubInterface, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if		v.Status				== STATE_PRIVATE_OWNERSHIP	&&
 			v.Owner  				== caller					&& 
@@ -505,7 +505,7 @@ func (t *SimpleChaincode) lease_company_to_private(stub *shim.ChaincodeStub, v C
 //=================================================================================================================================
 //	 private_to_scrap_merchant
 //=================================================================================================================================
-func (t *SimpleChaincode) private_to_scrap_merchant(stub *shim.ChaincodeStub, v CargoPack, caller string, recipient_name string) ([]byte, error) {
+func (t *SimpleChaincode) private_to_scrap_merchant(stub shim.ChaincodeStubInterface, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
 	if		v.Status				== STATE_PRIVATE_OWNERSHIP	&&
 			v.Owner					== caller					&& 
@@ -535,7 +535,7 @@ func (t *SimpleChaincode) private_to_scrap_merchant(stub *shim.ChaincodeStub, v 
 //=================================================================================================================================
 //	 get_package_details
 //=================================================================================================================================
-func (t *SimpleChaincode) get_package_details(stub *shim.ChaincodeStub, v CargoPack, caller string) ([]byte, error) {
+func (t *SimpleChaincode) get_package_details(stub shim.ChaincodeStubInterface, v CargoPack, caller string) ([]byte, error) {
 	fmt.Printf("Nihal Copy of chaincode running!")
 	bytes, err := json.Marshal(v)
 	
@@ -554,7 +554,7 @@ func (t *SimpleChaincode) get_package_details(stub *shim.ChaincodeStub, v CargoP
 //	 get_package_details
 //=================================================================================================================================
 
-func (t *SimpleChaincode) get_packages(stub *shim.ChaincodeStub, caller string) ([]byte, error) {
+func (t *SimpleChaincode) get_packages(stub shim.ChaincodeStubInterface, caller string) ([]byte, error) {
 
 fmt.Printf("Nihal Copy of chaincode running!")
 	bytes, err := stub.GetState("v5cIDs")
@@ -602,7 +602,7 @@ fmt.Printf("Nihal Copy of chaincode running!")
 //=================================================================================================================================
 //	 update_type
 //=================================================================================================================================
-func (t *SimpleChaincode) update_type(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_type(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value string) ([]byte, error) {
 		fmt.Printf("update_type called")
 		
 		if 	v.Status			== STATE_MANUFACTURE	&&
@@ -627,7 +627,7 @@ func (t *SimpleChaincode) update_type(stub *shim.ChaincodeStub, v CargoPack, cal
 //	 update_particulars
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_particulars(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_particulars(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value string) ([]byte, error) {
 	
 	fmt.Printf("update_particulars called")
 	if 		v.Status			== STATE_MANUFACTURE	&&
@@ -651,7 +651,7 @@ func (t *SimpleChaincode) update_particulars(stub *shim.ChaincodeStub, v CargoPa
 //=================================================================================================================================
 //	 update_sourcecity
 //=================================================================================================================================
-func (t *SimpleChaincode) update_sourcecity(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_sourcecity(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
 			v.Delivered			== 0				{
@@ -673,7 +673,7 @@ func (t *SimpleChaincode) update_sourcecity(stub *shim.ChaincodeStub, v CargoPac
 //	 update_particulars
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_destcity(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_destcity(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
 			v.Delivered			== 0				{
@@ -694,7 +694,7 @@ func (t *SimpleChaincode) update_destcity(stub *shim.ChaincodeStub, v CargoPack,
 //=================================================================================================================================
 //	 update_weight
 //=================================================================================================================================
-func (t *SimpleChaincode) update_weight(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value int) ([]byte, error) {
+func (t *SimpleChaincode) update_weight(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value int) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
 			v.Delivered			== 0				{
@@ -717,7 +717,7 @@ func (t *SimpleChaincode) update_weight(stub *shim.ChaincodeStub, v CargoPack, c
 // 					       below in this program.
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_owner(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_owner(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
 			v.Delivered			== 0				{
@@ -738,7 +738,7 @@ func (t *SimpleChaincode) update_owner(stub *shim.ChaincodeStub, v CargoPack, ca
 //=================================================================================================================================
 //	 update_delivered
 //=================================================================================================================================
-func (t *SimpleChaincode) update_delivered(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value int) ([]byte, error) {
+func (t *SimpleChaincode) update_delivered(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value int) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
 			v.Delivered			== 0				{
@@ -760,7 +760,7 @@ func (t *SimpleChaincode) update_delivered(stub *shim.ChaincodeStub, v CargoPack
 //	 update_status
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_status(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value int) ([]byte, error) {
+func (t *SimpleChaincode) update_status(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value int) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
 			v.Delivered			== 0				{
@@ -781,7 +781,7 @@ func (t *SimpleChaincode) update_status(stub *shim.ChaincodeStub, v CargoPack, c
 //=================================================================================================================================
 //	 update_lastlocation
 //=================================================================================================================================
-func (t *SimpleChaincode) update_lastlocation(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_lastlocation(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
 			v.Delivered			== 0				{
@@ -803,7 +803,7 @@ func (t *SimpleChaincode) update_lastlocation(stub *shim.ChaincodeStub, v CargoP
 //	 update_dispatchdate
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_dispatchdate(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_dispatchdate(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value string) ([]byte, error) {
 		if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner					== caller				&& 
 			v.Delivered				== 0				{
@@ -824,7 +824,7 @@ func (t *SimpleChaincode) update_dispatchdate(stub *shim.ChaincodeStub, v CargoP
 //=================================================================================================================================
 //	 update_delivereddate
 //=================================================================================================================================
-func (t *SimpleChaincode) update_delivereddate(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_delivereddate(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
 			v.Delivered			== 0				{
@@ -846,7 +846,7 @@ func (t *SimpleChaincode) update_delivereddate(stub *shim.ChaincodeStub, v Cargo
 //	 update_dimensions
 //=================================================================================================================================
 
-func (t *SimpleChaincode) update_dimensions(stub *shim.ChaincodeStub, v CargoPack, caller string, new_value string) ([]byte, error) {
+func (t *SimpleChaincode) update_dimensions(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value string) ([]byte, error) {
 	if 		v.Status			== STATE_MANUFACTURE	&&
 			v.Owner				== caller				&& 
 			v.Delivered			== 0				{
@@ -867,7 +867,7 @@ func (t *SimpleChaincode) update_dimensions(stub *shim.ChaincodeStub, v CargoPac
 //=================================================================================================================================
 //	 deliver_package
 //=================================================================================================================================
-func (t *SimpleChaincode) deliver_package(stub *shim.ChaincodeStub, v CargoPack,caller string) ([]byte, error) {
+func (t *SimpleChaincode) deliver_package(stub shim.ChaincodeStubInterface, v CargoPack,caller string) ([]byte, error) {
 fmt.Printf("Nihal Copy of chaincode running!")
 	if		v.Status			== STATE_BEING_SCRAPPED	&& 
 			v.Owner				== caller				&& 
