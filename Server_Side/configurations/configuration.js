@@ -82,7 +82,7 @@ config.vehicle = "https://github.com/nihalansari/car-lease-demo/Chaincode/vehicl
 //Chaincode deployed names
 //config.vehicle_name = '2e436d1363bb9f7c00342fa3fe30eff2c303f06ed4a396a06416a5e1e488ead7edd99f337e31fc6692d785bc0d9a30e942f111caccae15e7c34de6c716f0d92a';
 //config.vehicle_name = 'TTcargo9';
-config.vehicle_name = '160ddf7fe8da52b4b5d2bef57441498b7a78f952d08828c503141e010c89a72b789708753c8ee68dfbe6320490bdcc1c257daac452564071079e77618e2d9f69';
-
+//config.vehicle_name = '160ddf7fe8da52b4b5d2bef57441498b7a78f952d08828c503141e010c89a72b789708753c8ee68dfbe6320490bdcc1c257daac452564071079e77618e2d9f69';
+config.vehicle_name='';
 
 exports.config = config; // Exports for use in other files that require this one

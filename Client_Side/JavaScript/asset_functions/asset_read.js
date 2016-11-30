@@ -9,7 +9,7 @@ function loadAssets()
 	var objects = [];
 	var error = false;
 	var xhr = new XMLHttpRequest()
-	xhr.open("GET", "/blockchain/assets/vehicles", true)
+	xhr.open("GET", "/blockchain/assets/cargopacks", true)
 	xhr.overrideMimeType("text/plain");
 	xhr.onprogress = function () {
 		var data = xhr.responseText;
@@ -94,7 +94,7 @@ function loadUpdateAssets()
 	var posLast = 0;
 	var objects = [];
 	var xhr = new XMLHttpRequest()
-	xhr.open("GET", "/blockchain/assets/vehicles", true)
+	xhr.open("GET", "/blockchain/assets/cargopacks", true)
 	xhr.overrideMimeType("text/plain");
 	xhr.onprogress = function () {
 		var data = xhr.responseText;

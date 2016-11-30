@@ -11,7 +11,7 @@ function createAsset()
 	var data = {};
 	var found = [];
 	var xhr = new XMLHttpRequest()
-	xhr.open("POST", "/blockchain/assets/vehicles", true)
+	xhr.open("POST", "/blockchain/assets/cargopacks", true)
 	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 	xhr.overrideMimeType("text/plain");
 	xhr.onprogress = function () {
@@ -104,7 +104,7 @@ function transferAsset()
 {
 	var found = [];
 	var xhr = new XMLHttpRequest()
-	xhr.open("PUT", "/blockchain/assets/vehicles/"+transferArray[transferIndex-1].v5cID+"/owner", true); //PUT (Updates)
+	xhr.open("PUT", "/blockchain/assets/cargopacks/"+transferArray[transferIndex-1].v5cID+"/owner", true); //PUT (Updates)
 	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 	xhr.overrideMimeType("text/plain");
 	xhr.onprogress = function () {
@@ -206,7 +206,7 @@ function scrapAsset()
 	var found = [];
 	var objects = [];
 	var xhr = new XMLHttpRequest()
-	xhr.open("DELETE", "blockchain/assets/vehicles/"+scrapArray[scrapIndex-1].v5cID, true) //As it refers to an v5, the path is: blockchain/assets/vehicles/vehicle/..
+	xhr.open("DELETE", "blockchain/assets/cargopacks/"+scrapArray[scrapIndex-1].v5cID, true) //As it refers to an v5, the path is: blockchain/assets/vehicles/vehicle/..
 
 	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 	xhr.overrideMimeType("text/plain");
@@ -356,7 +356,7 @@ function updateField()
 	var found = [];
 	var field = bigData[increment].field;
 	var xhr = new XMLHttpRequest()
-	xhr.open("PUT", "/blockchain/assets/vehicles/"+bigData[increment].v5cID+"/"+bigData[increment].field, true)
+	xhr.open("PUT", "/blockchain/assets/cargopacks/"+bigData[increment].v5cID+"/"+bigData[increment].field, true)
 	xhr.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
 	xhr.overrideMimeType("text/plain");
 	xhr.onprogress = function () {

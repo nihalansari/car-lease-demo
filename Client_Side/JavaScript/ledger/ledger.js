@@ -176,45 +176,96 @@ function getTransactions(){
 						type = "Transfer";
 						function_name = "private_to_scrap_merchant";
 					}
-					if(payload.indexOf("create_vehicle") != -1)
+					if(payload.indexOf("create_package") != -1)
 					{
 						type = "Create";
-						function_name = "create_vehicle";
+						function_name = "create_package";
 					}
-					if(payload.indexOf("update_make") != -1)
+					if(payload.indexOf("update_type") != -1)
 					{
 						type = "Update";
-						function_name = "update_make";
-						update_type = "Make";
+						function_name = "update_type";
+						update_type = "Type";
 					}
-					if(payload.indexOf("update_model") != -1)
+					if(payload.indexOf("update_particulars") != -1)
 					{
 						type = "Update";
-						function_name = "update_model";
-						update_type = "Model";
+						function_name = "update_particulars";
+						update_type = "Particulars";
 					}
-					if(payload.indexOf("update_registration") != -1)
+					if(payload.indexOf("update_sourcecity") != -1)
 					{
 						type = "Update";
-						function_name = "update_registration";
-						update_type = "Registration";
+						function_name = "update_sourcecity";
+						update_type = "SourceCity";
 					}
-					if(payload.indexOf("update_vin") != -1)
+					if(payload.indexOf("update_destcity") != -1)
 					{
 						type = "Update";
-						function_name = "update_vin";
-						update_type = "VIN";
+						function_name = "update_destcity";
+						update_type = "DestCity";
 					}
-					if(payload.indexOf("update_colour") != -1)
+					if(payload.indexOf("update_weight") != -1)
 					{
 						type = "Update";
-						function_name = "update_colour";
-						update_type = "Colour";
+						function_name = "update_weight";
+						update_type = "Weight";
 					}
-					if(payload.indexOf("scrap_vehicle") != -1)
+					if(payload.indexOf("update_owner") != -1)
 					{
-						type = "Scrap";
-						function_name = "scrap_vehicle";
+						type = "Update";
+						function_name = "update_owner";
+						update_type = "Owner";
+					}
+					if(payload.indexOf("update_delivered") != -1)
+					{
+						type = "Update";
+						function_name = "update_delivered";
+						update_type = "Delivered";
+					}
+					if(payload.indexOf("update_status") != -1)
+					{
+						type = "Update";
+						function_name = "update_status";
+						update_type = "Status";
+					}
+					if(payload.indexOf("update_lastlocation") != -1)
+					{
+						type = "Update";
+						function_name = "update_lastlocation";
+						update_type = "Location";
+					}
+					if(payload.indexOf("update_dispatchdate") != -1)
+					{
+						type = "Update";
+						function_name = "update_dispatchdate";
+						update_type = "DispatchDate";
+					}
+					if(payload.indexOf("update_delivereddate") != -1)
+					{
+						type = "Update";
+						function_name = "update_delivereddate";
+						update_type = "DeliveredDate";
+					}
+					if(payload.indexOf("update_delivereddate") != -1)
+					{
+						type = "Update";
+						function_name = "update_delivereddate";
+						update_type = "DeliveredDate";
+					}
+
+					if(payload.indexOf("update_dimensions") != -1)
+					{
+						type = "Update";
+						function_name = "update_dimensions";
+						update_type = "Dimensions";
+					}
+
+					if(payload.indexOf("deliver_package") != -1)
+					{
+						type = "Update";
+						function_name = "deliver_package";
+						update_type = "Delivered";
 					}
 					var v5cID = 'undefined';
 					var timestamp = 'undefined';
@@ -236,12 +287,22 @@ function getTransactions(){
 
 					if(type == "Transfer")
 					{
-						var vin = get_update("vin", v5cID);
-						var make = get_update("make", v5cID);
-						var model = get_update("model", v5cID);
-						var reg = get_update("registration", v5cID);
-						var colour = get_update("colour", v5cID);
-						var carDetails = '['+vin+'] '+make+' '+model+', '+reg+', '+colour
+						var type = get_update("type", v5cID);
+						var particulars = get_update("particulars", v5cID);
+						var sourcecity = get_update("sourcecity", v5cID);
+						var destcity = get_update("destcity", v5cID);
+						var weight = get_update("weight", v5cID);
+						var owner = get_update("owner", v5cID);
+						var delivered = get_update("delivered", v5cID);
+						var status1 = get_update("status", v5cID);
+						var lastlocation = get_update("lastlocation", v5cID);
+						var dispatchdate = get_update("dispatchdate", v5cID);
+						var delivereddate = get_update("delivereddate", v5cID);
+						var dimensions = get_update("dimensions", v5cID);
+
+						//var carDetails = '['+vin+'] '+make+' '+model+', '+reg+', '+colour
+						var carDetails = '['+type+'] '+particulars+' '+sourcecity+', '+destcity+', '+weight+', '+owner+', '+delivered+', '+status1+', '+lastlocation+', '+dispatchdate+', '+delivereddate+', '+dimensions
+
 						
 						if(carDetails.indexOf('undefined') != -1)
 						{
