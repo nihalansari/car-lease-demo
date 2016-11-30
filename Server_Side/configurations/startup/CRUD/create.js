@@ -105,20 +105,20 @@ function addUser()
 			case "regulators": 
 				userAff = "00001";
 				break;
-			case "manufacturers":
+			case "suppliers":
 				userAff = "00002";
 				break;
-			case "dealerships":
+			case "warehouse":
 				userAff = "00003";
 				break;
-			case "lease_companies":
+			case "airports":
 				userAff = "00004";
 				break;
-			case "leasees":
+			case "buyer":
 				userAff = "00003";
 				break;
-			case "scrap_merchants":
-				userAff = "00005";
+			case "delivery":
+				userAff = "00004";
 				break;
 	}
 
