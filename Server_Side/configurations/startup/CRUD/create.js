@@ -138,7 +138,8 @@ function addUser()
 	request(options, function(error, response, body)
 	{	
 	
-		console.log("INITIAL LOGIN ATTEMPT", body)
+		console.log("INITIAL LOGIN ATTEMPT", body);
+		tracing.create("INITIAL LOGIN ATTEMPT", body);
 	
 		if(body && body.hasOwnProperty("OK"))	// Runs if user was already created will return ok if they exist with CA whether they are logged in or not
 		{
@@ -166,7 +167,8 @@ function addUser()
 					error.message = 'Unable to get user ecert: '+users[counter].identity;
 					error.error = false;
 					
-					tracing.create('ERROR', 'Startup', error+" "+err);
+					
+					tracing.create('ERROR#', 'Startup', error+" "+err);
 
 					if(counter < users.length - 1)
 					{
@@ -203,7 +205,7 @@ function addUser()
 					error.message = 'Unable to register user: '+users[counter].identity;
 					error.error = false;
 					
-					tracing.create('ERROR', 'Startup', error+" "+err);
+					tracing.create('ERROR$', 'Startup', error+" "+err);
 
 					if(counter < users.length - 1)
 					{
