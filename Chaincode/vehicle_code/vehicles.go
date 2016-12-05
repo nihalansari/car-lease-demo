@@ -272,10 +272,17 @@ func (t *SimpleChaincode) save_changes(stub shim.ChaincodeStubInterface, v Cargo
 func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 	
 	var i1 int
-	caller, err := t.get_caller_data(stub)
 
+	caller, caller_affiliation, err := t.get_caller_data(stub)
+	
 	if err != nil { return nil, errors.New("Error retrieving caller information")}
 
+	fmt.Printf("function: ", function)
+    fmt.Printf("caller: ", caller)
+    fmt.Printf("affiliation: ", caller_affiliation)
+
+	
+	
 	
 	if function == "create_package" { return t.create_package(stub, caller, args[0])
 	} else { 																				// If the function is not a create then there must be a car so we need to retrieve the car.
@@ -331,10 +338,14 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function string, args []string) ([]byte, error) {
 													
 	fmt.Printf("Nihal Copy of chaincode running!")
-	caller, err := t.get_caller_data(stub)
+	caller, caller_affiliation, err := t.get_caller_data(stub)
+	
+	if err != nil { return nil, errors.New("Error retrieving caller information")}
 
-																							if err != nil { fmt.Printf("QUERY: Error retrieving caller details", err); return nil, errors.New("QUERY: Error retrieving caller details: "+err.Error()) }
-														
+	fmt.Printf("function: ", function)
+    fmt.Printf("caller: ", caller)
+    fmt.Printf("affiliation: ", caller_affiliation)
+													
 	if function == "get_package_details" { 
 	
 			if len(args) != 1 { fmt.Printf("Incorrect number of arguments passed"); return nil, errors.New("QUERY: Incorrect number of arguments passed") }
