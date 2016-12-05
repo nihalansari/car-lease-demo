@@ -49,7 +49,7 @@ var warehouse = {};
 warehouse.read = warehouseFile.read;
 exports.warehouse = warehouse;
 
-var airportsFile = require(__dirname+'/lease_companies/airports.js');
+var airportsFile = require(__dirname+'/lease_companies/lease_companies.js');
 var airports = {};
 airports.read = airportsFile.read;
 exports.airports = airports;
