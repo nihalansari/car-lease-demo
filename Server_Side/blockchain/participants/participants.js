@@ -34,3 +34,32 @@ var scrap_merchantsFile = require(__dirname+'/scrap_merchants/scrap_merchants.js
 var scrap_merchants = {};
 scrap_merchants.read = scrap_merchantsFile.read;
 exports.scrap_merchants = scrap_merchants;
+
+
+
+//***** amazon delivery participants
+
+var suppliersFile = require(__dirname+'/manufacturers/manufacturers.js');
+var suppliers = {};
+suppliers.read = suppliersFile.read;
+exports.suppliers = suppliers;
+
+var warehouseFile = require(__dirname+'/dealerships/dealerships.js');
+var warehouse = {};
+warehouse.read = warehouseFile.read;
+exports.warehouse = warehouse;
+
+var airportsFile = require(__dirname+'/lease_companies/airports.js');
+var airports = {};
+airports.read = airportsFile.read;
+exports.airports = airports;
+
+var buyerFile = require(__dirname+'/leasees/leasees.js');
+var buyer = {};
+buyer.read = buyerFile.read;
+exports.buyer = buyer;
+
+var deliveryFile = require(__dirname+'/scrap_merchants/scrap_merchants.js');
+var delivery = {};
+delivery.read = deliveryFile.read;
+exports.delivery = delivery;
