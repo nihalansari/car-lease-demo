@@ -520,40 +520,9 @@ console.log("ENV VARIABLES", configFile.config.api_ip, configFile.config.api_por
 //--------------------------------------------------------------------------------------------------------------------
 //	Functions that will overwrite default config values
 //--------------------------------------------------------------------------------------------------------------------
-var triggertext;
-
-function chkbpserver()
-{
-		// Breakpoint server will halt the control in this loop BEGIN
-			var breakpointserverURL = "http://" + "9.182.238.212" + ":8000"
-			var data = null;
-			var xhr = new XMLHttpRequest();
-			xhr.withCredentials = false;
-			xhr.addEventListener("readystatechange", function () {
-			  if (this.readyState === 4) {
-				var resp=this.responseText;
-				console.log(this.responseText);
-				triggertext=this.responseText;
-				
-				});
-			xhr.open("GET", breakpointserverURL);
-			xhr.setRequestHeader("content-type", "application/javascript");
-			xhr.send(data);
-	// Breakpoint server will halt the control in this loop END
-
-}
 function check_if_config_requires_overwriting(assignPort)
 {
 			
-			//loop here until RELEASE is read
-			while(triggertext != "RELEASE")
-			{ 	
-				var delay=30000; //30 seconds
-				setTimeout(function() {
-					console.log("waiting for RELEASE...");
-					chkbpserver();
-						}, delay);
-			}
 						
 	var app_url = configFile.config.app_url
 	var app_port = configFile.config.app_port
