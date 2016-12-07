@@ -404,8 +404,8 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	
 	if 				v5c_ID  == "" 	 || 
 					matched == false    {
-																		fmt.Printf("CREATE_VEHICLE: Invalid v5cID provided");
-																		return nil, errors.New("Invalid v5cID provided")
+																		fmt.Printf("CREATE_VEHICLE: Invalid v5cID provided=" + v5cID)
+																		return nil, errors.New("Invalid v5cID provided=" + v5cID)
 	}
 
 	err = json.Unmarshal([]byte(vehicle_json), &v)							// Convert the JSON defined above into a vehicle object for go
