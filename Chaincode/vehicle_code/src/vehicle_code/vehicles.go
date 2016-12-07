@@ -344,11 +344,11 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 		if len(args) != 1 { fmt.Printf("Incorrect number of arguments passed"); return nil, errors.New("QUERY: Incorrect number of arguments passed") }
 		v, err := t.retrieve_v5c(stub, args[0])
 		if err != nil { fmt.Printf("QUERY: Error retrieving v5c: %s", err); return nil, errors.New("QUERY: Error retrieving v5c "+err.Error()) }
-		return t.get_vehicle_details(stub, v, caller, caller_affiliation)
+		return t.get_package_details(stub, v, caller)
 	} else if function == "check_unique_v5c" {
 		return t.check_unique_v5c(stub, args[0], caller, caller_affiliation)
 	} else if function == "get_packages" {
-		return t.get_packages(stub, caller, caller_affiliation)
+		return t.get_packages(stub, caller)
 	} else if function == "get_ecert" {
 		return t.get_ecert(stub, args[0])
 	} else if function == "ping" {
@@ -416,11 +416,11 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	
 																		if record != nil { return nil, errors.New("Vehicle already exists") }
 
-	if 	caller_affiliation != AUTHORITY {							// Only the regulator can create a new v5c
+//	if 	caller_affiliation != AUTHORITY {							// Only the regulator can create a new v5c
+//
+//		return nil, errors.New(fmt.Sprintf("Permission Denied. create_vehicle. %v === %v", caller_affiliation, AUTHORITY))
 
-		return nil, errors.New(fmt.Sprintf("Permission Denied. create_vehicle. %v === %v", caller_affiliation, AUTHORITY))
-
-	}
+//	}
 
 	
 	_, err  = t.save_changes(stub, v)									
