@@ -251,7 +251,7 @@ func (t *SimpleChaincode) Invoke(stub shim.ChaincodeStubInterface, function stri
 	caller, caller_affiliation, err := t.get_caller_data(stub)
 	
 	//if err != nil { return nil, errors.New("Error retrieving caller information")}
-	fmt.Printf(err)
+	err=nil
 	fmt.Printf("function: ", function)
     fmt.Printf("caller: ", caller)
     fmt.Printf("affiliation: ", caller_affiliation)
@@ -318,7 +318,7 @@ func (t *SimpleChaincode) Query(stub shim.ChaincodeStubInterface, function strin
 	caller, caller_affiliation, err := t.get_caller_data(stub)
 	
 //	if err != nil { return nil, errors.New("Error retrieving caller information")}
-	fmt.Printf(err)
+	err=nil
 	fmt.Printf("function: ", function)
     fmt.Printf("caller: ", caller)
     fmt.Printf("affiliation: ", caller_affiliation)
