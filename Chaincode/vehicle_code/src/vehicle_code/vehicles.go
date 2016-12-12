@@ -620,8 +620,8 @@ func (t *SimpleChaincode) get_package_details(stub shim.ChaincodeStubInterface, 
 	fmt.Printf("Nihal Copy of chaincode running!")
 	bytes, err := json.Marshal(v)
 	
-	if err == nil 
-	{
+	if err == nil { 
+	
 		return bytes, nil 
 		
 	}
