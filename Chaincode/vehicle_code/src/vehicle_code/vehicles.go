@@ -519,18 +519,18 @@ func (t *SimpleChaincode) manufacturer_to_private(stub shim.ChaincodeStubInterfa
 //=================================================================================================================================
 func (t *SimpleChaincode) private_to_private(stub shim.ChaincodeStubInterface, v CargoPack, caller string, recipient_name string) ([]byte, error) {
 	
-	if 		v.Status				== STATE_PRIVATE_OWNERSHIP	&&
-			v.Owner					== caller					&&
-			v.Delivered				== 0					{
-			
+	//if 		v.Status				== STATE_PRIVATE_OWNERSHIP	&&
+	//		v.Owner					== caller					&&
+	//		v.Delivered				== 0					{
+	//		
 					v.Owner = recipient_name
-					
-	} else {
-		
-															return nil, errors.New("Permission denied")
-	
-	}
-	
+	//				
+	//} else {
+	//	
+	//														return nil, errors.New("Permission denied")
+	//
+	//}
+	//
 	_, err := t.save_changes(stub, v)
 	
 															if err != nil { fmt.Printf("PRIVATE_TO_PRIVATE: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
