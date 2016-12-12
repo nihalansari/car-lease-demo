@@ -620,14 +620,14 @@ func (t *SimpleChaincode) get_package_details(stub shim.ChaincodeStubInterface, 
 	fmt.Printf("Nihal Copy of chaincode running!")
 	bytes, err := json.Marshal(v)
 	
-																if err != nil { return nil, errors.New("GET_VEHICLE_DETAILS: Invalid vehicle object") }
+	return bytes, nil															if err != nil { return nil, errors.New("GET_VEHICLE_DETAILS: Invalid vehicle object") }
 																
-	if 		v.Owner	== caller		{
-				
-					return bytes, nil		
-	} else {
-																return nil, errors.New("Permission Denied")	
-	}
+	//if 		v.Owner	== caller		{
+	//			
+	//				return bytes, nil		
+	//} else {
+	//															return nil, errors.New("Permission Denied")	
+	//}
 
 }
 
