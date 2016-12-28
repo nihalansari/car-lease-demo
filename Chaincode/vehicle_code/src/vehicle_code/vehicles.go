@@ -469,7 +469,7 @@ func (t *SimpleChaincode) authority_to_manufacturer(stub shim.ChaincodeStubInter
 	} else {									// Otherwise if there is an error
 	
 															fmt.Printf("AUTHORITY_TO_MANUFACTURER: Permission Denied");
-															return nil, errors.New("Permission Denied")
+															return nil, errors.New("Permission Denied1")
 	
 	}
 	
@@ -503,7 +503,7 @@ func (t *SimpleChaincode) manufacturer_to_private(stub shim.ChaincodeStubInterfa
 					v.Status = STATE_PRIVATE_OWNERSHIP
 					
 	} else {
-															return nil, errors.New("Permission denied")
+															return nil, errors.New("Permission denied2")
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -527,7 +527,7 @@ func (t *SimpleChaincode) private_to_private(stub shim.ChaincodeStubInterface, v
 	//				
 	//} else {
 	//	
-	//														return nil, errors.New("Permission denied")
+	//														return nil, errors.New("Permission denied3")
 	//
 	//}
 	//
@@ -551,7 +551,7 @@ func (t *SimpleChaincode) private_to_lease_company(stub shim.ChaincodeStubInterf
 					v.Owner = recipient_name
 					
 	} else {
-															return nil, errors.New("Permission denied")
+															return nil, errors.New("Permission denied4")
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -573,7 +573,7 @@ func (t *SimpleChaincode) lease_company_to_private(stub shim.ChaincodeStubInterf
 				v.Owner = recipient_name
 	
 	} else {
-															return nil, errors.New("Permission denied")
+															return nil, errors.New("Permission denied5")
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -597,7 +597,7 @@ func (t *SimpleChaincode) private_to_scrap_merchant(stub shim.ChaincodeStubInter
 	
 	} else {
 		
-															return nil, errors.New("Permission denied")
+															return nil, errors.New("Permission denied6")
 	
 	}
 	
@@ -632,7 +632,7 @@ func (t *SimpleChaincode) get_package_details(stub shim.ChaincodeStubInterface, 
 	//			
 	//				return bytes, nil		
 	//} else {
-	//															return nil, errors.New("Permission Denied")	
+	//															return nil, errors.New("Permission Denied6")	
 	//}
 
 }
@@ -699,7 +699,7 @@ func (t *SimpleChaincode) update_type(stub shim.ChaincodeStubInterface, v CargoP
 					v.Type = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+															return nil, errors.New("Permission denied7")
 	}
 	
 	_, err := t.save_changes(stub, v)
