@@ -385,7 +385,7 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	weight2         := "\"Weight\":0, "
 	owner2          := "\"Owner\":\""+caller+"\", "
 	delivered2    	:= "\"Delivered\":0, "
-	status2     	:= "\"Status\":1, "
+	status2     	:= "\"Status\":0, "
 	lastlocation2   := "\"LastLocation\":\"UNDEFINED\", "
 	dispatchdate2   := "\"DispatchDate\":\"mm-dd-yyyy\", "
 	delivereddate2  := "\"DeliveredDate\":\"mm-dd-yyyy\", "
@@ -724,7 +724,7 @@ func (t *SimpleChaincode) update_particulars(stub shim.ChaincodeStubInterface, v
 					v.Particulars = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+				return nil, errors.New("UPDATE PARTICULARS Permission denied:" + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -746,7 +746,7 @@ func (t *SimpleChaincode) update_sourcecity(stub shim.ChaincodeStubInterface, v 
 					v.SourceCity = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+				return nil, errors.New("UPDATE SOURCE CITY Permission denied:" + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -768,7 +768,7 @@ func (t *SimpleChaincode) update_destcity(stub shim.ChaincodeStubInterface, v Ca
 					v.DestCity = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+				return nil, errors.New("UPDATE DESTCITY Permission denied:" + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -789,7 +789,7 @@ func (t *SimpleChaincode) update_weight(stub shim.ChaincodeStubInterface, v Carg
 					v.Weight = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+				return nil, errors.New("UPDATE WEIGHT Permission denied:" + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -812,13 +812,14 @@ func (t *SimpleChaincode) update_owner(stub shim.ChaincodeStubInterface, v Cargo
 					v.Owner = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+				return nil, errors.New("UPDATE OWNER Permission denied:" + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
 	
 															if err != nil { fmt.Printf("UPDATE_MODEL: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
 	
+	fmt.Printf("UPDATED_owner$$")
 	return nil, nil
 }
 
@@ -833,7 +834,7 @@ func (t *SimpleChaincode) update_delivered(stub shim.ChaincodeStubInterface, v C
 					v.Delivered = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+				return nil, errors.New("UPDATE DELIVERED Permission denied:" + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -855,7 +856,7 @@ func (t *SimpleChaincode) update_status(stub shim.ChaincodeStubInterface, v Carg
 					v.Status = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+				return nil, errors.New("UPDATE STATUS Permission denied:" + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -876,7 +877,7 @@ func (t *SimpleChaincode) update_lastlocation(stub shim.ChaincodeStubInterface, 
 					v.LastLocation = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+				return nil, errors.New("UPDATE LAST LOC Permission denied:" + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -898,7 +899,7 @@ func (t *SimpleChaincode) update_dispatchdate(stub shim.ChaincodeStubInterface, 
 					v.DispatchDate = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+				return nil, errors.New("UPDATE DISP DATEPermission denied: " + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -919,7 +920,7 @@ func (t *SimpleChaincode) update_delivereddate(stub shim.ChaincodeStubInterface,
 					v.DeliveredDate = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+				return nil, errors.New("UPDATE deliveredDATE Permission denied:" + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -941,7 +942,7 @@ func (t *SimpleChaincode) update_dimensions(stub shim.ChaincodeStubInterface, v 
 					v.Dimensions = new_value
 					
 	} else {
-															return nil, errors.New("Permission denied")
+				return nil, errors.New("UPDATE dimensions Permission denied:" + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
@@ -963,7 +964,7 @@ fmt.Printf("Nihal Copy of chaincode running!")
 					v.Delivered = 1
 				
 	} else {
-		return nil, errors.New("Permission denied")
+				return nil, errors.New("DELIVER PKG Permission denied: " + caller)
 	}
 	
 	_, err := t.save_changes(stub, v)
