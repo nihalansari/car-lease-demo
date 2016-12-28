@@ -385,7 +385,7 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	weight2         := "\"Weight\":0, "
 	owner2          := "\"Owner\":\""+caller+"\", "
 	delivered2    	:= "\"Delivered\":0, "
-	status2     	:= "\"Status\":0, "
+	status2     	:= "\"Status\":1, "
 	lastlocation2   := "\"LastLocation\":\"UNDEFINED\", "
 	dispatchdate2   := "\"DispatchDate\":\"mm-dd-yyyy\", "
 	delivereddate2  := "\"DeliveredDate\":\"mm-dd-yyyy\", "
