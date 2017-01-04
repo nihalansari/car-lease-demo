@@ -810,7 +810,7 @@ func (t *SimpleChaincode) update_owner(stub shim.ChaincodeStubInterface, v Cargo
 			v.Owner					== caller			&&
 			v.Delivered				== 0			{		// If the roles and users are ok 
 	
-					v.Owner  = recipient_name		// then make the owner the new owner
+					v.Owner  = new_value		// then make the owner the new owner
 					v.Status = STATE_MANUFACTURE			// and mark it in the state of manufacture
 	
 	} else {									// Otherwise if there is an error
