@@ -805,22 +805,27 @@ func (t *SimpleChaincode) update_weight(stub shim.ChaincodeStubInterface, v Carg
 //=================================================================================================================================
 
 func (t *SimpleChaincode) update_owner(stub shim.ChaincodeStubInterface, v CargoPack, caller string, new_value string) ([]byte, error) {
-	if 		v.Status			== STATE_MANUFACTURE	&&
-			v.Owner				== caller				&& 
-			v.Delivered			== 0				{
-			
-					v.Owner = new_value
-					
-	} else {
-				return nil, errors.New("UPDATE OWNER Permission denied:" + caller)
+
+	if     	v.Status				== STATE_TEMPLATE	&&
+			v.Owner					== caller			&&
+			v.Delivered				== 0			{		// If the roles and users are ok 
+	
+					v.Owner  = recipient_name		// then make the owner the new owner
+					v.Status = STATE_MANUFACTURE			// and mark it in the state of manufacture
+	
+	} else {									// Otherwise if there is an error
+	
+															fmt.Printf("AUTHORITY_TO_MANUFACTURER: Permission Denied");
+															return nil, errors.New("Permission Denied1")
+	
 	}
 	
-	_, err := t.save_changes(stub, v)
+	_, err := t.save_changes(stub, v)						// Write new state
+
+															if err != nil {	fmt.Printf("AUTHORITY_TO_MANUFACTURER: Error saving changes: %s", err); return nil, errors.New("Error saving changes")	}
+														
+	return nil, nil									// We are Done
 	
-															if err != nil { fmt.Printf("UPDATE_MODEL: Error saving changes: %s", err); return nil, errors.New("Error saving changes") }
-	
-	fmt.Printf("UPDATED_owner$$")
-	return nil, nil
 }
 
 //=================================================================================================================================
