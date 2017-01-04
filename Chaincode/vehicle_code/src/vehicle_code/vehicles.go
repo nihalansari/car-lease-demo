@@ -385,7 +385,7 @@ fmt.Printf("Nihal Copy of chaincode running!")
 	weight2         := "\"Weight\":0, "
 	owner2          := "\"Owner\":\""+caller+"\", "
 	delivered2    	:= "\"Delivered\":0, "
-	status2     	:= "\"Status\":1, "
+	status2     	:= "\"Status\":0, "
 	lastlocation2   := "\"LastLocation\":\"UNDEFINED\", "
 	dispatchdate2   := "\"DispatchDate\":\"mm-dd-yyyy\", "
 	delivereddate2  := "\"DeliveredDate\":\"mm-dd-yyyy\", "
@@ -625,7 +625,7 @@ func (t *SimpleChaincode) get_package_details(stub shim.ChaincodeStubInterface, 
 		return bytes, nil 
 		
 	}
-	return nil, errors.New("GET_VEHICLE_DETAILS: Invalid vehicle object") 
+	return nil, errors.New("GET_PKG_DETAILS: Invalid package object") 
 	
 	
 	//if 		v.Owner	== caller		{
